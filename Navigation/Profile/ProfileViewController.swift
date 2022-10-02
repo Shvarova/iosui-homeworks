@@ -6,49 +6,45 @@
 //
 
 import UIKit
-   
-final class ProfileViewController: UIViewController {
+
+class ProfileViewController: UIViewController, UITextFieldDelegate {
     
-    private lazy var profileHeaderView: ProfileHeaderView = {
-        let view = ProfileHeaderView(frame: .zero)
-        view.backgroundColor = .lightGray
-        view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
+    let profileHeaderView = ProfileHeaderView()
+
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setupNavigationBar()
-        self.setupView()
+            super.viewDidLoad()
+            title = "Профиль"
+        }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        profileHeaderViewSetup()
     }
     
-    private func setupNavigationBar() {
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationItem.title = "Профиль"
-    }
-    
-    private func setupView() {
+    private func profileHeaderViewSetup() {
+        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
         self.view.backgroundColor = .white
         self.view.addSubview(self.profileHeaderView)
-        let topConstraint = self.profileHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
-        let leadingConstraint = self.profileHeaderView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor)
-        let trailingConstraint = self.profileHeaderView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor)
-        let bottomConstraint = self.profileHeaderView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         NSLayoutConstraint.activate([
-            topConstraint, leadingConstraint, trailingConstraint, bottomConstraint
-        ].compactMap({ $0 }))
+            profileHeaderView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            profileHeaderView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            profileHeaderView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
+            profileHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            profileHeaderView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
-}
     
-extension ProfileViewController: ProfileHeaderViewProtocol {
-    
-    func tapStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void) {
-                
-        UIView.animate(withDuration: 0.3, delay: 0.1) {
-            self.view.layoutIfNeeded()
-        } completion: { _ in
-            completion()
-        }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
+    
+    func hideKeyboard() {
+        profileHeaderView.statusTextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        hideKeyboard()
+        return true
+    }
+    
 }
