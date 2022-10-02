@@ -16,6 +16,7 @@
 		368400BA28E2EE9500CDDEEB /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368400B928E2EE9500CDDEEB /* PostViewController.swift */; };
 		368400BC28E2EEC400CDDEEB /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368400BB28E2EEC400CDDEEB /* InfoViewController.swift */; };
 		368400BE28E2EF0200CDDEEB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 368400BD28E2EF0200CDDEEB /* .gitignore */; };
+		368400C628EA3B0B00CDDEEB /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368400C528EA3B0B00CDDEEB /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		368400B928E2EE9500CDDEEB /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		368400BB28E2EEC400CDDEEB /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		368400BD28E2EF0200CDDEEB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		368400C528EA3B0B00CDDEEB /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +64,10 @@
 		3684009E28E2EC4E00CDDEEB /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				368400C428EA3AD600CDDEEB /* Profile */,
 				3684009F28E2EC4E00CDDEEB /* AppDelegate.swift */,
 				368400B328E2EE1F00CDDEEB /* MainTabBarController.swift */,
 				368400B528E2EE4E00CDDEEB /* FeedViewController.swift */,
-				368400B728E2EE7600CDDEEB /* ProfileViewController.swift */,
 				368400B928E2EE9500CDDEEB /* PostViewController.swift */,
 				368400BB28E2EEC400CDDEEB /* InfoViewController.swift */,
 				368400A828E2EC5000CDDEEB /* Assets.xcassets */,
@@ -74,6 +76,15 @@
 				368400BD28E2EF0200CDDEEB /* .gitignore */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		368400C428EA3AD600CDDEEB /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				368400C528EA3B0B00CDDEEB /* ProfileHeaderView.swift */,
+				368400B728E2EE7600CDDEEB /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +162,7 @@
 				368400B628E2EE4E00CDDEEB /* FeedViewController.swift in Sources */,
 				368400B828E2EE7600CDDEEB /* ProfileViewController.swift in Sources */,
 				368400A028E2EC4E00CDDEEB /* AppDelegate.swift in Sources */,
+				368400C628EA3B0B00CDDEEB /* ProfileHeaderView.swift in Sources */,
 				368400BC28E2EEC400CDDEEB /* InfoViewController.swift in Sources */,
 				368400BA28E2EE9500CDDEEB /* PostViewController.swift in Sources */,
 			);
