@@ -11,148 +11,143 @@ protocol ProfileHeaderViewProtocol: AnyObject {
     func tapStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void)
 }
 
-final class ProfileHeaderView: UIView {
-
-    private lazy var photoImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "Photo"))
-        imageView.layer.cornerRadius = 75
-        imageView.clipsToBounds = true
-        imageView.layer.borderWidth = 3
-        imageView.layer.borderColor = UIColor.white.cgColor
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+class ProfileHeaderView: UIView {
+    
+    var delegate: ProfileHeaderViewProtocol?
+      
+    private let nameLabel: UILabel = {
+        let name = UILabel()
+        name.translatesAutoresizingMaskIntoConstraints = false
+        name.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        name.text = "Hipster Cat"
+        name.textAlignment = .left
+        return name
     }()
-
-    private lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Hipster Cat"
-        label.font = .systemFont(ofSize: 18, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    
+    private lazy var statusLabel: UILabel = {
+        let status = UILabel ()
+        status.translatesAutoresizingMaskIntoConstraints = false
+        status.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        status.textColor = .gray
+        status.text = statusText
+        return status
     }()
-
-    private lazy var statusTextView: UITextView = {
-        let textView = UITextView()
-        textView.backgroundColor = .lightGray
-        textView.font = .systemFont(ofSize: 14)
-        textView.textColor = .gray
-        textView.text = "Waiting with something..."
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
+    
+    private let userAvatar: UIImageView = {
+        let avatar = UIImageView ()
+        avatar.translatesAutoresizingMaskIntoConstraints = false
+        avatar.image = UIImage(named: "Photo")
+        avatar.layer.cornerRadius = 75
+        avatar.layer.borderWidth = 3
+        avatar.layer.masksToBounds = true
+        avatar.layer.borderColor = UIColor.white.cgColor
+        return avatar
     }()
-
-    private lazy var showStatusButton: UIButton = {
+    
+    private lazy var statusButton: UIButton = {
         let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Show status", for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 4
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowOffset.width = 4
+        button.layer.shadowOffset.height = 4
         button.layer.shadowRadius = 4
+        button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
-        button.addTarget(self, action: #selector(self.tapStatusButton), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(statusTextChanged), for: .touchUpInside)
         return button
+    } ()
+    
+    let statusTextField: UITextField = {
+       let text = UITextField()
+        text.translatesAutoresizingMaskIntoConstraints = false
+        text.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        text.textColor = .black
+        text.backgroundColor = .white
+        text.layer.cornerRadius = 4
+        text.layer.masksToBounds = true
+        text.layer.borderWidth = 1
+        text.layer.borderColor = UIColor.black.cgColor
+        text.isHidden = true
+        return text
     }()
-
-    private lazy var statusTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Waiting with something..."
-        textField.returnKeyType = .done
-        textField.autocapitalizationType = .words
-        textField.font = .systemFont(ofSize: 15)
-        textField.textColor = .systemGray2
-        textField.backgroundColor = .systemGray4
-        textField.borderStyle = .roundedRect
-        textField.returnKeyType = .next
-        textField.keyboardType = .default
-        textField.clearButtonMode = .always
-        textField.alpha = 0
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-
-    private var showStatusButtonConstraintOn: NSLayoutConstraint?
-    private var showStatusButtonConstraintOff: NSLayoutConstraint?
-    weak var delegate: ProfileHeaderViewProtocol?
-
+    
+    private var statusText: String = "Waiting for something..."
+    private var statusTopButton: NSLayoutConstraint?
+    private var statusTopButtonMoved: NSLayoutConstraint?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.drawSelf()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
-        self.addGestureRecognizer(tap)
+        setupView()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func setupView() {
+        
+        self.backgroundColor = .lightGray
+        
+        self.addSubview(userAvatar)
+        self.addSubview(nameLabel)
+        self.addSubview(statusButton)
+        self.addSubview(statusLabel)
+        self.addSubview(statusTextField)
+        self.statusTopButton = statusButton.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 16)
+        guard let statusTopButton = statusTopButton else { return }
 
-    private func drawSelf() {
-        self.addSubview(self.photoImageView)
-        self.addSubview(self.nameLabel)
-        self.addSubview(self.statusTextView)
-        self.addSubview(self.showStatusButton)
-        self.addSubview(self.statusTextView)
-        self.addSubview(self.statusTextField)
-        let topPhotoImageConstraint = self.photoImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16)
-        let leadingPhotoImageConstraint = self.photoImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
-        let widthPhotoImageConstraint = self.photoImageView.widthAnchor.constraint(equalToConstant: 150)
-        let heightPhotoImageConstraint = self.photoImageView.heightAnchor.constraint(equalToConstant: 150)
-        let topNameLabelConstraint = self.nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 27)
-        let leadingNameLabelConstraint = self.nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 182)
-        let trailingNameLabelConstraint = self.nameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
-        self.showStatusButtonConstraintOn = self.showStatusButton.topAnchor.constraint(equalTo: self.photoImageView.bottomAnchor, constant: 16)
-        self.showStatusButtonConstraintOn?.priority = UILayoutPriority(rawValue: 999)
-        let leadingShowStatusButton = self.showStatusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
-        let trailingShowStatusButton = self.showStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
-        let heightShowStatusButton = self.showStatusButton.heightAnchor.constraint(equalToConstant: 50)
-        let bottomStatusTextView = self.statusTextView.bottomAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: -18)
-        let leadingStatusTextView = self.statusTextView.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor)
-        let trailingStatusTextView = self.statusTextView.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor)
-        let heightStatusTextView = self.statusTextView.heightAnchor.constraint(equalToConstant: 30)
+        
         NSLayoutConstraint.activate([
-            topPhotoImageConstraint, leadingPhotoImageConstraint, widthPhotoImageConstraint,
-            heightPhotoImageConstraint, topNameLabelConstraint, leadingNameLabelConstraint,
-            trailingNameLabelConstraint,
-            self.showStatusButtonConstraintOn, leadingShowStatusButton, trailingShowStatusButton,
-            heightShowStatusButton, bottomStatusTextView, leadingStatusTextView,
-            trailingStatusTextView, heightStatusTextView
-        ].compactMap({ $0}))
+            userAvatar.widthAnchor.constraint(equalToConstant: 150),
+            userAvatar.heightAnchor.constraint(equalToConstant: 150),
+            userAvatar.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 16),
+            userAvatar.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor, constant: 16),
+            
+            nameLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 27),
+            nameLabel.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor,constant: 16),
+            nameLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
+            
+            statusButton.leadingAnchor.constraint (equalTo: leadingAnchor, constant: 16),
+            statusButton.trailingAnchor.constraint (equalTo: trailingAnchor, constant: -16),
+            statusButton.heightAnchor.constraint (equalToConstant: 50),
+            statusTopButton,
+            
+            statusLabel.bottomAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: -16),
+            statusLabel.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 16),
+            statusLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
+            
+            statusTextField.widthAnchor.constraint(equalToConstant: 200),
+            statusTextField.heightAnchor.constraint(equalToConstant: 40),
+            statusTextField.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 20),
+            statusTextField.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 16),
+            statusTextField.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor, constant: -16)
+        ])
+        
     }
 
-    @objc func tap(_ sender: Any) {
-        statusTextField.resignFirstResponder()
-    }
-
-    @objc private func tapStatusButton() {
+    @objc func statusTextChanged() {
+        print(statusLabel.text as Any)
         if self.statusTextField.isHidden {
-            self.statusTextField.alpha = 1
-            NSLayoutConstraint.deactivate([self.showStatusButtonConstraintOff].compactMap({ $0 }))
-            let topConstraint = self.statusTextField.topAnchor.constraint(equalTo: self.statusTextView.bottomAnchor, constant: 27)
-            let leadingConstraint = self.statusTextField.leadingAnchor.constraint(equalTo: self.statusTextView.leadingAnchor)
-            let trailingConstraint = self.statusTextField.trailingAnchor.constraint(equalTo: self.statusTextView.trailingAnchor)
-            let heightStatusTextFieldConstraint = self.statusTextField.heightAnchor.constraint(equalToConstant: 34)
-            self.showStatusButtonConstraintOn = self.showStatusButton.topAnchor.constraint(equalTo: self.photoImageView.bottomAnchor, constant: 70)
-            NSLayoutConstraint.activate([
-                topConstraint, leadingConstraint, trailingConstraint, heightStatusTextFieldConstraint,
-                self.showStatusButtonConstraintOn
-            ].compactMap({ $0 }))
+           self.statusTopButtonMoved = self.statusButton.topAnchor.constraint(equalTo: self.userAvatar.bottomAnchor, constant: 65)
+            NSLayoutConstraint.deactivate([self.statusTopButton].compactMap({$0}))
+            NSLayoutConstraint.activate([self.statusTopButtonMoved].compactMap({$0}))
+            statusButton.setTitle("Set status", for: .normal)
         } else {
-            self.statusTextField.isHidden = false
-            self.statusTextField.alpha = 0
-            NSLayoutConstraint.deactivate([self.showStatusButtonConstraintOn].compactMap({ $0 }))
-            if self.statusTextField.text != "" {
-                self.statusTextView.text = self.statusTextField.text
-                self.statusTextField.text = .none
+          self.statusTopButton = self.statusButton.topAnchor.constraint(equalTo: self.userAvatar.bottomAnchor, constant: 16)
+            NSLayoutConstraint.deactivate([self.statusTopButtonMoved].compactMap({$0}))
+            NSLayoutConstraint.activate([self.statusTopButton].compactMap({$0}))
+            self.statusLabel.text = self.statusTextField.text
+            if self.statusLabel.text == "" {
+                self.statusLabel.text = self.statusText
             }
-            self.showStatusButtonConstraintOff = self.showStatusButton.topAnchor.constraint(equalTo: self.photoImageView.bottomAnchor, constant: 16)
-
-            NSLayoutConstraint.activate([self.showStatusButtonConstraintOff].compactMap({ $0 }))
-            self.endEditing(true)
+            statusButton.setTitle("Show status", for: .normal)
         }
         self.delegate?.tapStatusButton(textFieldIsVisible: self.statusTextField.isHidden) { [weak self] in
-            self?.statusTextField.isHidden.toggle()
-        }
+                    self?.statusTextField.isHidden.toggle()
+                }
     }
 }
 

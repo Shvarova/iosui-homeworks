@@ -8,43 +8,63 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
+    
+    private lazy var headerHigh = profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
+    private lazy var newHeaderHigh = profileHeaderView.heightAnchor.constraint(equalToConstant: 300)
+    
 
     private lazy var profileHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView(frame: .zero)
-        view.backgroundColor = .lightGray
         view.delegate = self
+        view.backgroundColor = .lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    let newButton: UIButton = {
+        let button = UIButton ()
+        button.setTitle("Изменить", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 4
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupNavigationBar()
-        self.setupView()
+        setupNavigationBar()
+        setupView()
     }
 
     private func setupNavigationBar() {
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationItem.title = "Профиль"
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.title = "Профиль"
     }
 
     private func setupView() {
-        self.view.backgroundColor = .white
-        self.view.addSubview(self.profileHeaderView)
-        let topConstraint = self.profileHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
-        let leadingConstraint = self.profileHeaderView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor)
-        let trailingConstraint = self.profileHeaderView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor)
-        let bottomConstraint = self.profileHeaderView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+        view.backgroundColor = .white
+        view.addSubview(profileHeaderView)
+        view.addSubview(newButton)
+ 
         NSLayoutConstraint.activate([
-            topConstraint, leadingConstraint, trailingConstraint, bottomConstraint
-        ].compactMap({ $0 }))
+            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerHigh,
+            
+            newButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            newButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            newButton.heightAnchor.constraint(equalToConstant: 50),
+            newButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }
 
 extension ProfileViewController: ProfileHeaderViewProtocol {
 
     func tapStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void) {
-
+        self.headerHigh.isActive = !textFieldIsVisible
+        self.newHeaderHigh.isActive = textFieldIsVisible
         UIView.animate(withDuration: 0.3, delay: 0.1) {
             self.view.layoutIfNeeded()
         } completion: { _ in
