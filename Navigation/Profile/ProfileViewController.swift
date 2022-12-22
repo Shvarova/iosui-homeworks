@@ -14,18 +14,17 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
             super.viewDidLoad()
             title = "Профиль"
+        profileHeaderViewSetup()
         }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        profileHeaderViewSetup()
+        profileHeaderView.frame = UIScreen.main.bounds
     }
     
     private func profileHeaderViewSetup() {
-        //profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
         self.view.backgroundColor = .white
         self.view.addSubview(self.profileHeaderView)
-        profileHeaderView.frame = UIScreen.main.bounds
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
