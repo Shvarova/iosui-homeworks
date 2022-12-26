@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-      
+    
     private let nameLabel: UILabel = {
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +41,7 @@ class ProfileHeaderView: UIView {
     private lazy var statusButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Show status", for: .normal)
+        button.setTitle("Set status", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 4
@@ -55,7 +55,7 @@ class ProfileHeaderView: UIView {
     } ()
     
     let statusTextField: UITextField = {
-       let text = UITextField()
+        let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         text.textColor = .black
@@ -64,13 +64,10 @@ class ProfileHeaderView: UIView {
         text.layer.masksToBounds = true
         text.layer.borderWidth = 1
         text.layer.borderColor = UIColor.black.cgColor
-        text.alpha = 0
         return text
     }()
     
     private var statusText: String = "Waiting for something..."
-    private var statusTopButton: NSLayoutConstraint?
-    private var statusTopButtonMoved: NSLayoutConstraint?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,9 +87,6 @@ class ProfileHeaderView: UIView {
         self.addSubview(statusButton)
         self.addSubview(statusLabel)
         self.addSubview(statusTextField)
-        self.statusTopButton = statusButton.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 16)
-        guard let statusTopButton = statusTopButton else { return }
-
         
         NSLayoutConstraint.activate([
             userAvatar.widthAnchor.constraint(equalToConstant: 150),
@@ -107,39 +101,26 @@ class ProfileHeaderView: UIView {
             statusButton.leadingAnchor.constraint (equalTo: leadingAnchor, constant: 16),
             statusButton.trailingAnchor.constraint (equalTo: trailingAnchor, constant: -16),
             statusButton.heightAnchor.constraint (equalToConstant: 50),
-            statusTopButton,
+            statusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 24),
             
-            statusLabel.bottomAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: -16),
+            statusLabel.centerYAnchor.constraint(equalTo: userAvatar.centerYAnchor),
             statusLabel.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 16),
             statusLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
             
             statusTextField.widthAnchor.constraint(equalToConstant: 200),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
-            statusTextField.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 20),
+            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 24),
             statusTextField.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 16),
             statusTextField.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor, constant: -16)
         ])
         
     }
-
+    
     @objc func statusTextChanged() {
         print(statusLabel.text as Any)
-        if self.statusTextField.alpha == 0 {
-            self.statusTopButtonMoved = self.statusButton.topAnchor.constraint(equalTo: self.userAvatar.bottomAnchor, constant: 65)
-            NSLayoutConstraint.deactivate([self.statusTopButton].compactMap({$0}))
-            NSLayoutConstraint.activate([self.statusTopButtonMoved].compactMap({$0}))
-            self.statusTextField.alpha = 1
-            statusButton.setTitle("Set status", for: .normal)
-        } else {
-            self.statusTopButton = self.statusButton.topAnchor.constraint(equalTo: self.userAvatar.bottomAnchor, constant: 16)
-            NSLayoutConstraint.deactivate([self.statusTopButtonMoved].compactMap({$0}))
-            NSLayoutConstraint.activate([self.statusTopButton].compactMap({$0}))
-            self.statusTextField.alpha = 0
-            self.statusLabel.text = self.statusTextField.text
-            if self.statusLabel.text == "" {
-                self.statusLabel.text = self.statusText
-            }
-            statusButton.setTitle("Show status", for: .normal)
+        self.statusLabel.text = self.statusTextField.text
+        if self.statusLabel.text == "" {
+            self.statusLabel.text = self.statusText
         }
     }
 }
