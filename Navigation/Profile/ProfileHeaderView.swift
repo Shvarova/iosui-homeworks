@@ -7,13 +7,7 @@
 
 import UIKit
 
-protocol ProfileHeaderViewProtocol: AnyObject {
-    func tapStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void)
-}
-
 class ProfileHeaderView: UIView {
-    
-    var delegate: ProfileHeaderViewProtocol?
       
     private let nameLabel: UILabel = {
         let name = UILabel()
@@ -37,7 +31,7 @@ class ProfileHeaderView: UIView {
         let avatar = UIImageView ()
         avatar.translatesAutoresizingMaskIntoConstraints = false
         avatar.image = UIImage(named: "Photo")
-        avatar.layer.cornerRadius = 75
+        avatar.layer.cornerRadius = 60
         avatar.layer.borderWidth = 3
         avatar.layer.masksToBounds = true
         avatar.layer.borderColor = UIColor.white.cgColor
@@ -47,7 +41,7 @@ class ProfileHeaderView: UIView {
     private lazy var statusButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Show status", for: .normal)
+        button.setTitle("Set status", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 4
@@ -66,17 +60,14 @@ class ProfileHeaderView: UIView {
         text.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         text.textColor = .black
         text.backgroundColor = .white
-        text.layer.cornerRadius = 4
+        text.layer.cornerRadius = 12
         text.layer.masksToBounds = true
         text.layer.borderWidth = 1
         text.layer.borderColor = UIColor.black.cgColor
-        text.isHidden = true
         return text
     }()
     
     private var statusText: String = "Waiting for something..."
-    private var statusTopButton: NSLayoutConstraint?
-    private var statusTopButtonMoved: NSLayoutConstraint?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -96,13 +87,10 @@ class ProfileHeaderView: UIView {
         self.addSubview(statusButton)
         self.addSubview(statusLabel)
         self.addSubview(statusTextField)
-        self.statusTopButton = statusButton.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 16)
-        guard let statusTopButton = statusTopButton else { return }
-
         
         NSLayoutConstraint.activate([
-            userAvatar.widthAnchor.constraint(equalToConstant: 150),
-            userAvatar.heightAnchor.constraint(equalToConstant: 150),
+            userAvatar.widthAnchor.constraint(equalToConstant: 120),
+            userAvatar.heightAnchor.constraint(equalToConstant: 120),
             userAvatar.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 16),
             userAvatar.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor, constant: 16),
             
@@ -113,15 +101,15 @@ class ProfileHeaderView: UIView {
             statusButton.leadingAnchor.constraint (equalTo: leadingAnchor, constant: 16),
             statusButton.trailingAnchor.constraint (equalTo: trailingAnchor, constant: -16),
             statusButton.heightAnchor.constraint (equalToConstant: 50),
-            statusTopButton,
+            statusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 12),
             
-            statusLabel.bottomAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: -16),
+            statusLabel.centerYAnchor.constraint(equalTo: userAvatar.centerYAnchor),
             statusLabel.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 16),
             statusLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
             
             statusTextField.widthAnchor.constraint(equalToConstant: 200),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
-            statusTextField.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 20),
+            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 12),
             statusTextField.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 16),
             statusTextField.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor, constant: -16)
         ])
@@ -130,24 +118,9 @@ class ProfileHeaderView: UIView {
 
     @objc func statusTextChanged() {
         print(statusLabel.text as Any)
-        if self.statusTextField.isHidden {
-           self.statusTopButtonMoved = self.statusButton.topAnchor.constraint(equalTo: self.userAvatar.bottomAnchor, constant: 65)
-            NSLayoutConstraint.deactivate([self.statusTopButton].compactMap({$0}))
-            NSLayoutConstraint.activate([self.statusTopButtonMoved].compactMap({$0}))
-            statusButton.setTitle("Set status", for: .normal)
-        } else {
-          self.statusTopButton = self.statusButton.topAnchor.constraint(equalTo: self.userAvatar.bottomAnchor, constant: 16)
-            NSLayoutConstraint.deactivate([self.statusTopButtonMoved].compactMap({$0}))
-            NSLayoutConstraint.activate([self.statusTopButton].compactMap({$0}))
-            self.statusLabel.text = self.statusTextField.text
-            if self.statusLabel.text == "" {
-                self.statusLabel.text = self.statusText
-            }
-            statusButton.setTitle("Show status", for: .normal)
+        self.statusLabel.text = self.statusTextField.text
+        if self.statusLabel.text == "" {
+            self.statusLabel.text = self.statusText
         }
-        self.delegate?.tapStatusButton(textFieldIsVisible: self.statusTextField.isHidden) { [weak self] in
-                    self?.statusTextField.isHidden.toggle()
-                }
     }
 }
-

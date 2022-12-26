@@ -15,7 +15,6 @@ final class ProfileViewController: UIViewController {
 
     private lazy var profileHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView(frame: .zero)
-        view.delegate = self
         view.backgroundColor = .lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -59,20 +58,6 @@ final class ProfileViewController: UIViewController {
         ])
     }
 }
-
-extension ProfileViewController: ProfileHeaderViewProtocol {
-
-    func tapStatusButton(textFieldIsVisible: Bool, completion: @escaping () -> Void) {
-        self.headerHigh.isActive = !textFieldIsVisible
-        self.newHeaderHigh.isActive = textFieldIsVisible
-        UIView.animate(withDuration: 0.3, delay: 0.1) {
-            self.view.layoutIfNeeded()
-        } completion: { _ in
-            completion()
-        }
-    }
-}
-
 
 
 
