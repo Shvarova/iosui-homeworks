@@ -9,10 +9,6 @@ import UIKit
 
 final class ProfileViewController: UIViewController {
     
-    private lazy var headerHigh = profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
-    private lazy var newHeaderHigh = profileHeaderView.heightAnchor.constraint(equalToConstant: 300)
-    
-
     private lazy var profileHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView(frame: .zero)
         view.backgroundColor = .lightGray
@@ -49,7 +45,6 @@ final class ProfileViewController: UIViewController {
             profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerHigh,
             
             newButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             newButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
