@@ -63,6 +63,3 @@ class FeedViewController: UIViewController {
     }
 }
 
-struct Post {
-    let title:String = "Новый пост"
-}

@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-      
+    
     private let nameLabel: UILabel = {
         let name = UILabel()
         name.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +55,7 @@ class ProfileHeaderView: UIView {
     } ()
     
     let statusTextField: UITextField = {
-       let text = UITextField()
+        let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         text.textColor = .black
@@ -116,7 +116,7 @@ class ProfileHeaderView: UIView {
         ])
         
     }
-
+    
     @objc func statusTextChanged() {
         print(statusLabel.text as Any)
         self.statusLabel.text = self.statusTextField.text

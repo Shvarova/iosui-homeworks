@@ -13,9 +13,8 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .white
-        let newPost = Post()
         let titleLabel = UILabel()
-        titleLabel.text = newPost.title
+        titleLabel.text = "Новый пост"
         title = titleLabel.text
         navigationItem.backButtonTitle = "Назад"
         let infoImage = UIImage(named: "info")
