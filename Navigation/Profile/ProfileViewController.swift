@@ -16,18 +16,19 @@ final class ProfileViewController: UIViewController {
                          Post (author: "Пьер Огюст Ренуар – Жюли Мане (Девочка с кошкой)", description: "Берта Моризо и её муж Эжен Мане, брат легендарного творца, знали Ренуара и заказали у него портрет своей дочери", image: "Kitty", likes: 684, views: 984)]
     
     private lazy var profileHeaderView: ProfileHeaderView = {
-        let view = ProfileHeaderView(frame: .zero)
+        let view = ProfileHeaderView ()
         view.backgroundColor = .lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView ()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
         return tableView
     }()
@@ -37,16 +38,16 @@ final class ProfileViewController: UIViewController {
         setupNavigationBar()
         setupView()
     }
-
+    
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = "Профиль"
     }
-
+    
     private func setupView() {
         view.backgroundColor = .white
         view.addSubviews([profileHeaderView, tableView])
- 
+        
         NSLayoutConstraint.activate([
             profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -61,24 +62,33 @@ final class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            let vc = PhotosViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
 extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return posts.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
-            return cell
+        let defaultCell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosTableViewCell", for: indexPath) as? PhotosTableViewCell
+            return cell ?? defaultCell
         }
-        cell.authorLabel.text = posts[indexPath.row].author
-        cell.setupImage(name: posts[indexPath.row].image)
-        cell.descriptionLabel.text = posts[indexPath.row].description
-        cell.likesLabel.text = "Likes: \(posts[indexPath.row].likes)"
-        cell.viewsLabel.text = "Views: \(posts[indexPath.row].views)"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else {return defaultCell}
+        let row = indexPath.row - 1
+        cell.authorLabel.text = posts[row].author
+        cell.setupImage(name: posts[row].image)
+        cell.descriptionLabel.text = posts[row].description
+        cell.likesLabel.text = "Likes: \(posts[row].likes)"
+        cell.viewsLabel.text = "Views: \(posts[row].views)"
         return cell
     }
 }
+
