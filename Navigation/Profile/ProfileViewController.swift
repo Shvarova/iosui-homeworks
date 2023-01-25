@@ -47,10 +47,10 @@ final class ProfileViewController: UIViewController {
     
     private func setupView() {
         
-#if RELEASE
-        view.backgroundColor = .white
-#else
+#if DEBUG
         view.backgroundColor = .purple
+#else
+        view.backgroundColor = .white
 #endif
         view.addSubviews([profileHeaderView, tableView])
         
