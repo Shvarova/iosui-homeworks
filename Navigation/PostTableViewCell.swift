@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
     
@@ -75,12 +76,18 @@ class PostTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupImage (name: String) {
+    func setupImage (name: String, filter: ColorFilter) {
         guard let image = UIImage (named: name) else {
             print("No image")
             return
         }
-        imagePost.image = image
+ //       imagePost.image = image
+ //       ImageProcessor().processImage(sourceImage: image, filter: .gaussianBlur(radius: 3), completion: (nil) -> Void)
+        
+        let processor = ImageProcessor()
+        processor.processImage(sourceImage: image, filter: filter) { filteredImage in
+                    imagePost.image = filteredImage
+                }
     }
     
     private func setupView () {
@@ -91,6 +98,7 @@ class PostTableViewCell: UITableViewCell {
         addSubviews([authorLabel, imagePost, postStackView])
         setupConstraints()
     }
+    
     
     private func setupConstraints () {
         NSLayoutConstraint.activate([

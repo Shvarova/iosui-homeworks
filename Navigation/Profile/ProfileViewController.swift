@@ -7,8 +7,11 @@
 
 import UIKit
 import StorageService
+import iOSIntPackage
 
 final class ProfileViewController: UIViewController {
+    
+    private let filters: [ColorFilter] = [.crystallize(radius: 5), .noir, .colorInvert]
     
     private var posts = [Post (author: "Любовники моей жены", description: "Картина австрийского художника Карла Калера. Её заказал американский миллионер Кейт Бердсал Джонсон, который содержал 350 питомцев жены.", image: "Cats", likes: 32, views: 55),
                          Post (author: "Луис Уэйн – Мальчишник", description: "Художник прославился своими антропоморфными изображениями кошек. По словам английского писателя Герберта Уэллса, Луис придумал не только свой собственный кошачий стиль, а и создал самое настоящее кошачье общество и кошачий мир.", image: "Gents", likes: 251, views: 573),
@@ -48,7 +51,7 @@ final class ProfileViewController: UIViewController {
     private func setupView() {
         
 #if DEBUG
-        view.backgroundColor = .purple
+        view.backgroundColor = .gray
 #else
         view.backgroundColor = .white
 #endif
@@ -90,7 +93,9 @@ extension ProfileViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else {return defaultCell}
         let row = indexPath.row - 1
         cell.authorLabel.text = posts[row].author
-        cell.setupImage(name: posts[row].image)
+        
+        let randomInt = Int.random(in: 0 ... filters.count - 1)
+        cell.setupImage(name: posts[row].image, filter: filters[randomInt])
         cell.descriptionLabel.text = posts[row].description
         cell.likesLabel.text = "Likes: \(posts[row].likes)"
         cell.viewsLabel.text = "Views: \(posts[row].views)"

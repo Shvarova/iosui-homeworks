@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileHeaderView: UIView {
     
@@ -88,33 +89,35 @@ class ProfileHeaderView: UIView {
         self.addSubview(statusLabel)
         self.addSubview(statusTextField)
         
+        userAvatar.snp.makeConstraints { make in
+            make.width.height.equalTo(120)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).inset(16)
+            make.leading.equalTo(safeAreaLayoutGuide.snp.leading).inset(16)
+        }
+        
+        nameLabel.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).inset(27)
+            make.leading.equalTo(userAvatar.snp.trailing).offset(16)
+            make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing).inset(16)
+        }
+        
         NSLayoutConstraint.activate([
-            userAvatar.widthAnchor.constraint(equalToConstant: 120),
-            userAvatar.heightAnchor.constraint(equalToConstant: 120),
-            userAvatar.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 16),
-            userAvatar.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor, constant: 16),
-            
-            nameLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 27),
-            nameLabel.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor,constant: 16),
-            nameLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
-            
             statusButton.leadingAnchor.constraint (equalTo: leadingAnchor, constant: 16),
             statusButton.trailingAnchor.constraint (equalTo: trailingAnchor, constant: -16),
             statusButton.heightAnchor.constraint (equalToConstant: 50),
             statusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 12),
             statusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
-            
+
             statusLabel.centerYAnchor.constraint(equalTo: userAvatar.centerYAnchor),
             statusLabel.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 16),
             statusLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
-            
+
             statusTextField.widthAnchor.constraint(equalToConstant: 200),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
             statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 12),
             statusTextField.leadingAnchor.constraint(equalTo: userAvatar.trailingAnchor, constant: 16),
             statusTextField.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor, constant: -16)
         ])
-        
     }
     
     @objc func statusTextChanged() {
