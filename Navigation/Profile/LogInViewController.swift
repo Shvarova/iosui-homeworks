@@ -8,15 +8,25 @@
 import UIKit
 
 class LogInViewController: UIViewController {
-   
+    
+    private let currentUserService = CurrentUserService()
+    private let testUserService = TestUserService()
+    
+    private lazy var loginErrorAlert: UIAlertController = {
+        let alert = UIAlertController (title: "Неверный логин", message: nil, preferredStyle: .alert)
+        let action = UIAlertAction (title: "Ok", style: .cancel)
+        alert.addAction(action)
+        return alert
+    }()
+    
     private lazy var stackView: UIStackView = {
-            let stackView = UIStackView()
-            stackView.axis = .vertical
-            stackView.spacing = 10
-            stackView.distribution = .fillEqually
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-            return stackView
-        }()
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.distribution = .fillEqually
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -98,11 +108,26 @@ class LogInViewController: UIViewController {
         addViews()
         setupConstraints()
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-                contentView.addGestureRecognizer(tap)
+        contentView.addGestureRecognizer(tap)
     }
     
     @objc func goToProfile() {
+        
+        guard let login = loginTextField.text else { return }
+        
+#if DEBUG
+        guard let user = testUserService.checkLogin(login: login) else {
+            showAlert()
+            return
+        }
+#else
+        guard let user = currentUserService.checkLogin(login: login) else {
+            showAlert ()
+            return
+        }
+#endif
         let vc = ProfileViewController()
+        vc.setupUser(user: user)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -111,41 +136,45 @@ class LogInViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(self.didShowKeyboard(_:)),
-                                                   name: UIResponder.keyboardWillShowNotification,
-                                                   object: nil)
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(self.didHideKeyboard(_:)),
-                                                   name: UIResponder.keyboardWillHideNotification,
-                                                   object: nil)
-        }
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.didShowKeyboard(_:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.didHideKeyboard(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
     
     @objc private func didShowKeyboard(_ notification: Notification) {
-            if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-                let keyboardRectangle = keyboardFrame.cgRectValue
-                let keyboardHeight = keyboardRectangle.height
-                
-                let loginButtonBottomPointY = self.stackView.frame.origin.y + self.logInButton.frame.origin.y + self.logInButton.frame.height
-                let keyboardOriginY = self.view.frame.height - keyboardHeight
-                
-                let yOffset = keyboardOriginY < loginButtonBottomPointY
-                ? loginButtonBottomPointY - keyboardOriginY + 16
-                : 0
-                
-                self.scrollView.contentOffset = CGPoint(x: 0, y: yOffset)
-            }
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            let loginButtonBottomPointY = self.stackView.frame.origin.y + self.logInButton.frame.origin.y + self.logInButton.frame.height
+            let keyboardOriginY = self.view.frame.height - keyboardHeight
+            
+            let yOffset = keyboardOriginY < loginButtonBottomPointY
+            ? loginButtonBottomPointY - keyboardOriginY + 16
+            : 0
+            
+            self.scrollView.contentOffset = CGPoint(x: 0, y: yOffset)
         }
+    }
     
     @objc private func didHideKeyboard(_ notification: Notification) {
-            self.forcedHidingKeyboard()
-        }
+        self.forcedHidingKeyboard()
+    }
     
     @objc private func forcedHidingKeyboard() {
-            self.view.endEditing(true)
-            self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-        }
+        self.view.endEditing(true)
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    }
+    
+    private func showAlert () {
+        present(loginErrorAlert, animated: true)
+    }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -153,19 +182,23 @@ class LogInViewController: UIViewController {
             scrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
             scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+            
             logoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
             logoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: 100),
             logoImageView.heightAnchor.constraint(equalToConstant: 100),
+            
             loginPasswordStackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120),
             loginPasswordStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             loginPasswordStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             loginPasswordStackView.heightAnchor.constraint(equalToConstant: 100),
+            
             logInButton.topAnchor.constraint(equalTo: loginPasswordStackView.bottomAnchor, constant: 16),
             logInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             logInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),

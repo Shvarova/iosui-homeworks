@@ -78,6 +78,12 @@ class ProfileHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func addInfoUser (user: User) {
+        nameLabel.text = user.name
+        userAvatar.image = user.avatar
+        statusLabel.text = user.status
+    }
+    
     func setupView() {
         
         self.backgroundColor = .lightGray

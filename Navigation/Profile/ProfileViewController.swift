@@ -10,6 +10,8 @@ import StorageService
 
 final class ProfileViewController: UIViewController {
     
+    private var user: User?
+    
     private var posts = [Post (author: "Любовники моей жены", description: "Картина австрийского художника Карла Калера. Её заказал американский миллионер Кейт Бердсал Джонсон, который содержал 350 питомцев жены.", image: "Cats", likes: 32, views: 55),
                          Post (author: "Луис Уэйн – Мальчишник", description: "Художник прославился своими антропоморфными изображениями кошек. По словам английского писателя Герберта Уэллса, Луис придумал не только свой собственный кошачий стиль, а и создал самое настоящее кошачье общество и кошачий мир.", image: "Gents", likes: 251, views: 573),
                          Post (author: "Белый кот. Пьер Боннар.", description: "Боннар воспользовался новым приемом деформации, стремясь воссоздать юмористический образ этого животного, занявшего весьма причудливую позу.", image: "Cat", likes: 344, views: 692),
@@ -40,6 +42,11 @@ final class ProfileViewController: UIViewController {
         setupView()
     }
     
+    func setupUser (user: User) {
+        self.user = user
+        profileHeaderView.addInfoUser(user: user)
+    }
+    
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = "Профиль"
@@ -48,7 +55,7 @@ final class ProfileViewController: UIViewController {
     private func setupView() {
         
 #if DEBUG
-        view.backgroundColor = .purple
+        view.backgroundColor = .systemBlue
 #else
         view.backgroundColor = .white
 #endif
