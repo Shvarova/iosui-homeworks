@@ -14,4 +14,7 @@ class TestUserService: UserService {
     func checkLogin(login: String) -> User? {
         return testUser.login == login ? testUser : nil
     }
+    func getUser () -> User {
+        return testUser
+    }
 }

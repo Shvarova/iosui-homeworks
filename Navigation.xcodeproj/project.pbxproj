@@ -27,6 +27,11 @@
 		36944EDC2985433F009E1ED2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36944EDB2985433F009E1ED2 /* User.swift */; };
 		36944EDE29858C17009E1ED2 /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36944EDD29858C17009E1ED2 /* TestUserService.swift */; };
 		36944EE029858D20009E1ED2 /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36944EDF29858D20009E1ED2 /* CurrentUserService.swift */; };
+		36944EE32986D23E009E1ED2 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36944EE22986D23E009E1ED2 /* Checker.swift */; };
+		36944EE52986D2DC009E1ED2 /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36944EE42986D2DC009E1ED2 /* LoginViewControllerDelegate.swift */; };
+		36944EE72986D46D009E1ED2 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36944EE62986D46D009E1ED2 /* LoginInspector.swift */; };
+		36944EE92986D4BD009E1ED2 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36944EE82986D4BD009E1ED2 /* LoginFactory.swift */; };
+		36944EEB2986D4F4009E1ED2 /* MyLoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36944EEA2986D4F4009E1ED2 /* MyLoginFactory.swift */; };
 		36F789942971AE360034D100 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F789932971AE360034D100 /* CollectionViewModel.swift */; };
 		36FE1247298028AC001C1791 /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = 36FE1246298028AC001C1791 /* StorageService.docc */; };
 		36FE124D298028AC001C1791 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36FE1243298028AC001C1791 /* StorageService.framework */; };
@@ -98,6 +103,11 @@
 		36944EDB2985433F009E1ED2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		36944EDD29858C17009E1ED2 /* TestUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserService.swift; sourceTree = "<group>"; };
 		36944EDF29858D20009E1ED2 /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
+		36944EE22986D23E009E1ED2 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
+		36944EE42986D2DC009E1ED2 /* LoginViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerDelegate.swift; sourceTree = "<group>"; };
+		36944EE62986D46D009E1ED2 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
+		36944EE82986D4BD009E1ED2 /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
+		36944EEA2986D4F4009E1ED2 /* MyLoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginFactory.swift; sourceTree = "<group>"; };
 		36F789932971AE360034D100 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		36FE1243298028AC001C1791 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36FE1245298028AC001C1791 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
@@ -179,6 +189,7 @@
 			children = (
 				36507D8229705D98001C6F98 /* Photo */,
 				36661B7E295DE53B00016070 /* Helpers */,
+				36944EE12986D201009E1ED2 /* Login */,
 				368400C428EA3AD600CDDEEB /* Profile */,
 				3684009F28E2EC4E00CDDEEB /* AppDelegate.swift */,
 				368400B328E2EE1F00CDDEEB /* MainTabBarController.swift */,
@@ -199,12 +210,24 @@
 			children = (
 				368400C528EA3B0B00CDDEEB /* ProfileHeaderView.swift */,
 				368400B728E2EE7600CDDEEB /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		36944EE12986D201009E1ED2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
 				36661B7C295D059400016070 /* LogInViewController.swift */,
+				36944EE62986D46D009E1ED2 /* LoginInspector.swift */,
+				36944EE82986D4BD009E1ED2 /* LoginFactory.swift */,
+				36944EEA2986D4F4009E1ED2 /* MyLoginFactory.swift */,
 				36944EDB2985433F009E1ED2 /* User.swift */,
 				36944EDF29858D20009E1ED2 /* CurrentUserService.swift */,
 				36944EDD29858C17009E1ED2 /* TestUserService.swift */,
+				36944EE22986D23E009E1ED2 /* Checker.swift */,
+				36944EE42986D2DC009E1ED2 /* LoginViewControllerDelegate.swift */,
 			);
-			path = Profile;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		36F789952971AE710034D100 /* Model */ = {
@@ -377,7 +400,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36944EE72986D46D009E1ED2 /* LoginInspector.swift in Sources */,
 				36507D8829706006001C6F98 /* Constants.swift in Sources */,
+				36944EE52986D2DC009E1ED2 /* LoginViewControllerDelegate.swift in Sources */,
+				36944EE32986D23E009E1ED2 /* Checker.swift in Sources */,
 				36507D8429705DBC001C6F98 /* PhotosTableViewCell.swift in Sources */,
 				36507D8629705E20001C6F98 /* PhotosViewController.swift in Sources */,
 				368400B428E2EE1F00CDDEEB /* MainTabBarController.swift in Sources */,
@@ -388,8 +414,10 @@
 				36661B7D295D059400016070 /* LogInViewController.swift in Sources */,
 				36661B80295DE56D00016070 /* ExtensionUIView.swift in Sources */,
 				36944EE029858D20009E1ED2 /* CurrentUserService.swift in Sources */,
+				36944EE92986D4BD009E1ED2 /* LoginFactory.swift in Sources */,
 				368400C628EA3B0B00CDDEEB /* ProfileHeaderView.swift in Sources */,
 				36507D8A297061ED001C6F98 /* PhotosCollectionViewCell.swift in Sources */,
+				36944EEB2986D4F4009E1ED2 /* MyLoginFactory.swift in Sources */,
 				36F789942971AE360034D100 /* CollectionViewModel.swift in Sources */,
 				36944EDE29858C17009E1ED2 /* TestUserService.swift in Sources */,
 				36661B82295F270100016070 /* PostTableViewCell.swift in Sources */,

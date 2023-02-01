@@ -16,7 +16,9 @@ class MainTabBarController: UITabBarController {
     
     func setupControllers() {
         let feedViewController = createController(viewController: FeedViewController(), itemName: "Новости", ItemImage: "newspaper")
-        let profileViewController = createController(viewController: LogInViewController(), itemName: "Авторизация", ItemImage: "person.circle")
+        let loginViewController = LogInViewController()
+        loginViewController.loginDelegate = MyLoginFactory.makeLoginInspector()
+        let profileViewController = createController(viewController: loginViewController, itemName: "Авторизация", ItemImage: "person.circle")
         viewControllers = [feedViewController, profileViewController]
     }
         

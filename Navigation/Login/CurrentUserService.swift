@@ -14,4 +14,8 @@ class CurrentUserService: UserService {
     func checkLogin(login: String) -> User? {
         return newUser.login == login ? newUser : nil
     }
+    
+    func getUser () -> User {
+        return newUser
+    }
 }

@@ -9,11 +9,13 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
+    var loginDelegate: LoginViewControllerDelegate?
+    
     private let currentUserService = CurrentUserService()
     private let testUserService = TestUserService()
     
     private lazy var loginErrorAlert: UIAlertController = {
-        let alert = UIAlertController (title: "Неверный логин", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController (title: "Неверный логин или пароль", message: nil, preferredStyle: .alert)
         let action = UIAlertAction (title: "Ok", style: .cancel)
         alert.addAction(action)
         return alert
@@ -114,17 +116,17 @@ class LogInViewController: UIViewController {
     @objc func goToProfile() {
         
         guard let login = loginTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let loginDelegate = loginDelegate else { return }
+        
+        if !loginDelegate.check(login: login, password: password) {
+            showAlert()
+        }
         
 #if DEBUG
-        guard let user = testUserService.checkLogin(login: login) else {
-            showAlert()
-            return
-        }
+        let user = testUserService.getUser()
 #else
-        guard let user = currentUserService.checkLogin(login: login) else {
-            showAlert ()
-            return
-        }
+        let user = currentUserService.getUser()
 #endif
         let vc = ProfileViewController()
         vc.setupUser(user: user)
