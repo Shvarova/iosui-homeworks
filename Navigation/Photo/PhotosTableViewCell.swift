@@ -90,7 +90,7 @@ extension PhotosTableViewCell: UICollectionViewDataSource {
         }
         cell.setCornerRadius()
         
-        cell.setup(with: "\(model.photos[indexPath.row])")
+ //       cell.setup(with: "\(model.photos[indexPath.row])")
         return cell
     }
 }

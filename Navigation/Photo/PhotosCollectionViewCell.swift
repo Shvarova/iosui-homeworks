@@ -26,8 +26,8 @@ class PhotosCollectionViewCell : UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setup(with name: String) {
-        photo.image = UIImage(named: name)
+    func setup(with image: UIImage) {
+        photo.image = image
     }
 
     func setCornerRadius() {
