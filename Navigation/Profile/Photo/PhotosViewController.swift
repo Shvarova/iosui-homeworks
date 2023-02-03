@@ -41,9 +41,10 @@ class PhotosViewController: UIViewController {
         view.backgroundColor = .white
         addViews()
         addConstraints()
+        imagePublisherFacade.subscribe(self)
         imagePublisherFacade.addImagesWithTimer(time: 0.5, repeat: 11)
     }
-    
+
     func addViews(){
         view.addSubview(collectionView)
     }
@@ -55,6 +56,10 @@ class PhotosViewController: UIViewController {
             collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
+    }
+    
+    deinit {
+        imagePublisherFacade.removeSubscription(for: self)
     }
 }
 

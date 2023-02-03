@@ -12,8 +12,8 @@ class Checker: LoginViewControllerDelegate {
     
     static let shared = Checker()
     
-    private let currentLogin = "Java_cat"
-    private let currentPassword = "132435"
+    private let currentLogin = "admin"
+    private let currentPassword = "admin"
 
     private init() {}
 

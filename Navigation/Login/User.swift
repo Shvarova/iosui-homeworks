@@ -8,18 +8,15 @@
 import UIKit
 
 protocol UserService {
-    func checkLogin (login : String) -> User?
     func getUser () -> User
 }
 
 class User {
-    let login : String
     let name : String
     let avatar : UIImage
     let status : String
 
-    init(login: String, name: String, avatar: UIImage, status: String) {
-        self.login = login
+    init(name: String, avatar: UIImage, status: String) {
         self.name = name
         self.avatar = avatar
         self.status = status

@@ -11,8 +11,11 @@ class LogInViewController: UIViewController {
     
     var loginDelegate: LoginViewControllerDelegate?
     
-    private let currentUserService = CurrentUserService()
-    private let testUserService = TestUserService()
+#if DEBUG
+    private let service = TestUserService()
+#else
+    private let service = CurrentUserService()
+#endif
     
     private lazy var loginErrorAlert: UIAlertController = {
         let alert = UIAlertController (title: "Неверный логин или пароль", message: nil, preferredStyle: .alert)
@@ -63,6 +66,7 @@ class LogInViewController: UIViewController {
     
     private lazy var loginTextField: UITextField = {
         let textField = UITextField()
+        textField.text = "admin"
         textField.backgroundColor = .systemGray6
         textField.textColor = .black
         textField.autocapitalizationType = .none
@@ -78,6 +82,7 @@ class LogInViewController: UIViewController {
     
     private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
+        textField.text = "admin"
         textField.backgroundColor = .systemGray6
         textField.isSecureTextEntry = true
         textField.textColor = .black
@@ -121,13 +126,11 @@ class LogInViewController: UIViewController {
         
         if !loginDelegate.check(login: login, password: password) {
             showAlert()
+            return
         }
         
-#if DEBUG
-        let user = testUserService.getUser()
-#else
-        let user = currentUserService.getUser()
-#endif
+        let user = service.getUser()
+        
         let vc = ProfileViewController()
         vc.setupUser(user: user)
         navigationController?.pushViewController(vc, animated: true)

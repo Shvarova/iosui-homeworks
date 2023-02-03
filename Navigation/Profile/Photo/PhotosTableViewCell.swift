@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 class PhotosTableViewCell: UITableViewCell {
-    private let model = CollectionViewModel()
-
+    
+    private let imagePublisher = ImagePublisherFacade()
+    private var images = [UIImage]()
+    //    private let model = CollectionViewModel()
+    
     private lazy var titleLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.textColor = .black
@@ -18,7 +22,7 @@ class PhotosTableViewCell: UITableViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
-
+    
     private lazy var arrowImageView: UIImageView = {
         let arrow = UIImageView()
         arrow.image = UIImage(systemName: "arrow.right")
@@ -26,14 +30,14 @@ class PhotosTableViewCell: UITableViewCell {
         arrow.translatesAutoresizingMaskIntoConstraints = false
         return arrow
     }()
-
+    
     private lazy var layout : UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
         return layout
     }()
-
+    
     private lazy var collectionView : UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "DefaultCell")
@@ -44,30 +48,32 @@ class PhotosTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         return collectionView
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addViews()
         addConstraints()
+        imagePublisher.subscribe(self)
+        imagePublisher.addImagesWithTimer(time: 0, repeat: 11)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func addViews(){
+    
+    private func addViews(){
         addSubviews([titleLabel, arrowImageView, collectionView])
     }
-
-    func addConstraints(){
+    
+    private func addConstraints(){
         NSLayoutConstraint.activate([
-
+            
             titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 12),
             titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12),
-
+            
             arrowImageView.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
             arrowImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12),
-
+            
             collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
             collectionView.leftAnchor.constraint(equalTo: self.leftAnchor),
             collectionView.rightAnchor.constraint(equalTo: self.rightAnchor),
@@ -75,13 +81,17 @@ class PhotosTableViewCell: UITableViewCell {
             collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12),
         ])
     }
+    
+    deinit {
+        imagePublisher.removeSubscription(for: self)
+    }
 }
 
 extension PhotosTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        images.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as? PhotosCollectionViewCell
         else {
@@ -90,13 +100,20 @@ extension PhotosTableViewCell: UICollectionViewDataSource {
         }
         cell.setCornerRadius()
         
- //       cell.setup(with: "\(model.photos[indexPath.row])")
+        cell.setup(with: images[indexPath.row])
         return cell
     }
 }
 
-extension PhotosTableViewCell : UICollectionViewDelegateFlowLayout {
+extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: Constants.itemSizeInProfileCollection, height: Constants.itemSizeInProfileCollection)
+    }
+}
+
+extension PhotosTableViewCell: ImageLibrarySubscriber {
+    func receive(images: [UIImage]) {
+        self.images = images
+        collectionView.reloadData()
     }
 }

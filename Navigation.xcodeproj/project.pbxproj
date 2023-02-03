@@ -189,15 +189,12 @@
 		3684009E28E2EC4E00CDDEEB /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				36507D8229705D98001C6F98 /* Photo */,
 				36661B7E295DE53B00016070 /* Helpers */,
 				36944EE12986D201009E1ED2 /* Login */,
 				368400C428EA3AD600CDDEEB /* Profile */,
 				3684009F28E2EC4E00CDDEEB /* AppDelegate.swift */,
 				368400B328E2EE1F00CDDEEB /* MainTabBarController.swift */,
 				368400B528E2EE4E00CDDEEB /* FeedViewController.swift */,
-				36661B81295F270100016070 /* PostTableViewCell.swift */,
-				368400B928E2EE9500CDDEEB /* PostViewController.swift */,
 				368400BB28E2EEC400CDDEEB /* InfoViewController.swift */,
 				368400A828E2EC5000CDDEEB /* Assets.xcassets */,
 				368400AA28E2EC5000CDDEEB /* LaunchScreen.storyboard */,
@@ -212,6 +209,9 @@
 			children = (
 				368400C528EA3B0B00CDDEEB /* ProfileHeaderView.swift */,
 				368400B728E2EE7600CDDEEB /* ProfileViewController.swift */,
+				36661B81295F270100016070 /* PostTableViewCell.swift */,
+				368400B928E2EE9500CDDEEB /* PostViewController.swift */,
+				36507D8229705D98001C6F98 /* Photo */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
