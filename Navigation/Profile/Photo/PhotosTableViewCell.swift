@@ -12,8 +12,7 @@ class PhotosTableViewCell: UITableViewCell {
     
     private let imagePublisher = ImagePublisherFacade()
     private var images = [UIImage]()
-    //    private let model = CollectionViewModel()
-    
+
     private lazy var titleLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.textColor = .black

@@ -10,7 +10,6 @@ import iOSIntPackage
 
 class PhotosViewController: UIViewController {
     
-    private let imagePublisher = ImagePublisherFacade()
     private var imagesArray = [UIImage]()
     
     private let imagePublisherFacade = ImagePublisherFacade()
