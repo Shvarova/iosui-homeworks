@@ -38,19 +38,16 @@ class ProfileHeaderView: UIView {
         return avatar
     }()
     
-    private lazy var statusButton: UIButton = {
-        let button = UIButton()
+    private lazy var statusButton: CustomButton = {
+        let button = CustomButton (title: "Set status", titleColor: .white, cornerRadius: 4)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Set status", for: .normal)
-        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 4
         button.layer.shadowOffset.width = 4
         button.layer.shadowOffset.height = 4
         button.layer.shadowRadius = 4
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
-        button.addTarget(self, action: #selector(statusTextChanged), for: .touchUpInside)
+        button.action = statusTextChanged
         return button
     } ()
     

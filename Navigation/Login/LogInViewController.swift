@@ -97,13 +97,10 @@ class LogInViewController: UIViewController {
         return textField
     }()
     
-    private lazy var logInButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Log In", for: .normal)
+    private lazy var logInButton: CustomButton = {
+        let button = CustomButton (title: "Log In", titleColor: .white, cornerRadius: 10)
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
-        button.layer.cornerRadius = 10
-        button.clipsToBounds = true
-        button.addTarget(self, action: #selector(goToProfile), for: .touchUpInside)
+        button.action = goToProfile
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

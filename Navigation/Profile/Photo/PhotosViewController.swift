@@ -9,12 +9,8 @@ import UIKit
 import iOSIntPackage
 
 class PhotosViewController: UIViewController {
-    
     private var imagesArray = [UIImage]()
-    
     private let imagePublisherFacade = ImagePublisherFacade()
-    
-    private let model = CollectionViewModel()
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -41,9 +37,9 @@ class PhotosViewController: UIViewController {
         addViews()
         addConstraints()
         imagePublisherFacade.subscribe(self)
-        imagePublisherFacade.addImagesWithTimer(time: 0.5, repeat: 11)
+        imagePublisherFacade.addImagesWithTimer(time: 0.5, repeat: PhotosModel.photos.count, userImages: PhotosModel.photos)
     }
-
+    
     func addViews(){
         view.addSubview(collectionView)
     }
@@ -55,10 +51,6 @@ class PhotosViewController: UIViewController {
             collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
-    }
-    
-    deinit {
-        imagePublisherFacade.removeSubscription(for: self)
     }
 }
 
