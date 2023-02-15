@@ -10,13 +10,8 @@ import StorageService
 
 final class ProfileViewController: UIViewController {
     
-    private var user: User?
-    
-    private var posts = [Post (author: "Любовники моей жены", description: "Картина австрийского художника Карла Калера. Её заказал американский миллионер Кейт Бердсал Джонсон, который содержал 350 питомцев жены.", image: "Cats", likes: 32, views: 55),
-                         Post (author: "Луис Уэйн – Мальчишник", description: "Художник прославился своими антропоморфными изображениями кошек. По словам английского писателя Герберта Уэллса, Луис придумал не только свой собственный кошачий стиль, а и создал самое настоящее кошачье общество и кошачий мир.", image: "Gents", likes: 251, views: 573),
-                         Post (author: "Белый кот. Пьер Боннар.", description: "Боннар воспользовался новым приемом деформации, стремясь воссоздать юмористический образ этого животного, занявшего весьма причудливую позу.", image: "Cat", likes: 344, views: 692),
-                         Post (author: "Теофиль Александр Стейлен", description: "Рисунки котов для рекламы кабаре, которое в свою золотую эпоху было местом встречи творческой элиты.", image: "Poster", likes: 377, views: 518),
-                         Post (author: "Пьер Огюст Ренуар – Жюли Мане (Девочка с кошкой)", description: "Берта Моризо и её муж Эжен Мане, брат легендарного творца, знали Ренуара и заказали у него портрет своей дочери", image: "Kitty", likes: 684, views: 984)]
+    private var viewModel: ProfileViewModelProtocol?
+    private var posts: [Post]?
     
     private lazy var profileHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView ()
@@ -42,9 +37,22 @@ final class ProfileViewController: UIViewController {
         setupView()
     }
     
-    func setupUser (user: User) {
-        self.user = user
-        profileHeaderView.addInfoUser(user: user)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+ //       navigationController?.navigationBar.isHidden = false
+    }
+    
+    func setViewModel(viewModel: ProfileViewModelProtocol) {
+        self.viewModel = viewModel
+        updateView()
+    }
+    
+    private func updateView() {
+        viewModel?.updateView = { [weak self] model in
+            self?.posts = model.posts
+            self?.profileHeaderView.addInfoUser(user: model.user)
+        }
+        viewModel?.startUpdate()
     }
     
     private func setupNavigationBar() {
@@ -85,6 +93,7 @@ extension ProfileViewController: UITableViewDelegate {
 
 extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let posts = posts else { return 0 }
         return posts.count + 1
     }
     
@@ -94,7 +103,8 @@ extension ProfileViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PhotosTableViewCell", for: indexPath) as? PhotosTableViewCell
             return cell ?? defaultCell
         }
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else {return defaultCell}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell,
+              let posts = posts else { return defaultCell }
         let row = indexPath.row - 1
         cell.authorLabel.text = posts[row].author
         cell.setupImage(name: posts[row].image)

@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol FeedOutput: AnyObject {
+    func postButtonTouched()
+}
+
 class FeedViewController: UIViewController {
     
+    var output: FeedOutput?
    private let feedModel = FeedModel ()
 
    private lazy var button1: UIButton = {
@@ -99,8 +104,7 @@ class FeedViewController: UIViewController {
     }
     
     @objc func buttonClicked() {
-        let postViewController = PostViewController()
-        navigationController?.pushViewController(postViewController, animated: true)
+        output?.postButtonTouched()
     }
 }
 

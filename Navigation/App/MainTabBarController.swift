@@ -9,17 +9,26 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupControllers()
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        setupControllers()
+//    }
+    
+    var loginOutput: LogInOutput?
+    var feedOutput: FeedOutput?
     
     func setupControllers() {
-        let feedViewController = createController(viewController: FeedViewController(), itemName: "Новости", ItemImage: "newspaper")
+        
+        let feedViewController = FeedViewController()
+        feedViewController.output = feedOutput
+        
         let loginViewController = LogInViewController()
+        loginViewController.output = loginOutput
         loginViewController.loginDelegate = MyLoginFactory.makeLoginInspector()
-        let profileViewController = createController(viewController: loginViewController, itemName: "Авторизация", ItemImage: "person.circle")
-        viewControllers = [feedViewController, profileViewController]
+        
+        let feedNavigationController = createController(viewController: feedViewController, itemName: "Новости", ItemImage: "newspaper")
+        let loginNavigationController = createController(viewController: loginViewController, itemName: "Авторизация", ItemImage: "person.circle")
+        viewControllers = [feedNavigationController, loginNavigationController]
     }
         
     func createController(viewController: UIViewController, itemName: String, ItemImage: String) -> UINavigationController {

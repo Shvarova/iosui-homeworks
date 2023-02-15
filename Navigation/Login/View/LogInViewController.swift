@@ -7,15 +7,14 @@
 
 import UIKit
 
+protocol LogInOutput: AnyObject {
+    func loginButtonTouched()
+}
+
 class LogInViewController: UIViewController {
     
+    var output: LogInOutput?
     var loginDelegate: LoginViewControllerDelegate?
-    
-#if DEBUG
-    private let service = TestUserService()
-#else
-    private let service = CurrentUserService()
-#endif
     
     private lazy var loginErrorAlert: UIAlertController = {
         let alert = UIAlertController (title: "Неверный логин или пароль", message: nil, preferredStyle: .alert)
@@ -125,12 +124,7 @@ class LogInViewController: UIViewController {
             showAlert()
             return
         }
-        
-        let user = service.getUser()
-        
-        let vc = ProfileViewController()
-        vc.setupUser(user: user)
-        navigationController?.pushViewController(vc, animated: true)
+        output?.loginButtonTouched()
     }
     
     @objc func hideKeyboard(){
@@ -139,6 +133,7 @@ class LogInViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.didShowKeyboard(_:)),
                                                name: UIResponder.keyboardWillShowNotification,
