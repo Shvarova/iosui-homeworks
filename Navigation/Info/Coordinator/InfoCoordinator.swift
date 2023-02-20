@@ -8,8 +8,9 @@
 import UIKit
 
 final class InfoCoordinator: AppCoordinator {
+    
     var childs: [AppCoordinator] = []
-
+    private let controller = InfoViewController()
     private let navigationController: UINavigationController
 
     init(navigationController: UINavigationController) {
@@ -17,10 +18,6 @@ final class InfoCoordinator: AppCoordinator {
     }
 
     func start() {
-        navigationController.pushViewController(getInfoViewController(), animated: true)
-    }
-
-    private func getInfoViewController() -> UIViewController {
-        return InfoViewController()
+        navigationController.pushViewController(controller, animated: true)
     }
 }

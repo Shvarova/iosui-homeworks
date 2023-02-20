@@ -28,11 +28,6 @@ class NewPostViewController: UIViewController {
         navigationItem.rightBarButtonItem = infoButton
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
-    }
-        
     @objc func buttonInfoClicked() {
         output?.buttonInfoClicked()
     }

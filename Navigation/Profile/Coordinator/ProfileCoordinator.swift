@@ -8,8 +8,9 @@
 import UIKit
 
 final class ProfileCoordinator: AppCoordinator {
-    var childs: [AppCoordinator] = []
     
+    var childs: [AppCoordinator] = []
+    private let controller = ProfileViewController()
     private let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -17,13 +18,25 @@ final class ProfileCoordinator: AppCoordinator {
     }
     
     func start() {
-        navigationController.pushViewController(getProfileViewController(), animated: true)
+        setProfileViewController()
+        navigationController.pushViewController(controller, animated: true)
     }
-
-    private func getProfileViewController() -> UIViewController {
-        let vc = ProfileViewController()
+    
+    private func setProfileViewController() {
+        controller.output = self
         let viewModel = ProfileViewModel()
-        vc.setViewModel(viewModel: viewModel)
-        return vc
+        controller.setViewModel(viewModel: viewModel)
+    }
+    
+    fileprivate func showPhotosViewController() {
+            let coordinator = PhotosCoordinator(navigationController: navigationController)
+            coordinator.start()
+            childs.append(coordinator)
+        }
+}
+
+extension ProfileCoordinator: ProfileOutput {
+    func photosCellSelected() {
+        showPhotosViewController()
     }
 }

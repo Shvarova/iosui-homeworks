@@ -8,8 +8,9 @@
 import UIKit
 
 final class PhotosCoordinator: AppCoordinator {
+   
     var childs: [AppCoordinator] = []
-    
+    private let controller = PhotosViewController()
     private let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -17,11 +18,6 @@ final class PhotosCoordinator: AppCoordinator {
     }
     
     func start() {
-        navigationController.pushViewController(getPhotosViewController(), animated: true)
-    }
-
-    private func getPhotosViewController() -> UIViewController {
-        let vc = PhotosViewController()
-        return vc
+        navigationController.pushViewController(controller, animated: true)
     }
 }

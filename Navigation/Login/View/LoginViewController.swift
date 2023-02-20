@@ -1,5 +1,5 @@
 //
-//  LogInViewController.swift
+//  LoginViewController.swift
 //  Navigation
 //
 //  Created by Дина Шварова on 29.12.2022.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol LogInOutput: AnyObject {
+protocol LoginOutput: AnyObject {
     func loginButtonTouched()
 }
 
-class LogInViewController: UIViewController {
+class LoginViewController: UIViewController {
     
-    var output: LogInOutput?
+    var output: LoginOutput?
     var loginDelegate: LoginViewControllerDelegate?
     
     private lazy var loginErrorAlert: UIAlertController = {
@@ -107,7 +107,6 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationController?.navigationBar.isHidden = true
         addViews()
         setupConstraints()
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -133,7 +132,6 @@ class LogInViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.didShowKeyboard(_:)),
                                                name: UIResponder.keyboardWillShowNotification,

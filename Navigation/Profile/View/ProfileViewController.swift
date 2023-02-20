@@ -8,7 +8,13 @@
 import UIKit
 import StorageService
 
+protocol ProfileOutput {
+    func photosCellSelected()
+}
+
 final class ProfileViewController: UIViewController {
+    
+    var output: ProfileOutput?
     
     private var viewModel: ProfileViewModelProtocol?
     private var posts: [Post]?
@@ -35,11 +41,6 @@ final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         setupView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
- //       navigationController?.navigationBar.isHidden = false
     }
     
     func setViewModel(viewModel: ProfileViewModelProtocol) {
@@ -85,8 +86,7 @@ final class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            let vc = PhotosViewController()
-            navigationController?.pushViewController(vc, animated: true)
+            output?.photosCellSelected()
         }
     }
 }
