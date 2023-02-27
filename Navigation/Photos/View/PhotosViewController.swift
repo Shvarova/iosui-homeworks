@@ -39,7 +39,7 @@ class PhotosViewController: UIViewController {
       
         let start = DispatchTime.now()
         
-        imageProcessor.processImagesOnThread(sourceImages: imagesArray, filter: .noir, qos: .background) { images in
+        imageProcessor.processImagesOnThread(sourceImages: imagesArray, filter: .noir, qos: .userInteractive) { images in
             self.imagesArray = images.map({ image in
                 UIImage (cgImage: image!)
             })
@@ -49,6 +49,7 @@ class PhotosViewController: UIViewController {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
+            
             let timeInterval = Double(end.uptimeNanoseconds - start.uptimeNanoseconds)
                         print("Time = \(timeInterval / 1_000_000_000)")
             //time userInteractive = 2.652654708
@@ -90,11 +91,5 @@ extension PhotosViewController : UICollectionViewDataSource {
 extension PhotosViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: Constants.itemSizeInPhotosCollection, height: Constants.itemSizeInPhotosCollection)
-    }
-}
-extension PhotosViewController: ImageLibrarySubscriber {
-    func receive(images: [UIImage]) {
- //       imagesArray = images
-        collectionView.reloadData()
     }
 }
