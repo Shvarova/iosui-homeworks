@@ -9,8 +9,9 @@ import UIKit
 import iOSIntPackage
 
 class PhotosViewController: UIViewController {
-    private var imagesArray = [UIImage]()
-    private let imagePublisherFacade = ImagePublisherFacade()
+    
+    private var imagesArray = PhotosModel.photos
+    private let imageProcessor = ImageProcessor()
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -35,8 +36,27 @@ class PhotosViewController: UIViewController {
         view.backgroundColor = .white
         addViews()
         addConstraints()
-        imagePublisherFacade.subscribe(self)
-        imagePublisherFacade.addImagesWithTimer(time: 0.5, repeat: PhotosModel.photos.count, userImages: PhotosModel.photos)
+      
+        let start = DispatchTime.now()
+        
+        imageProcessor.processImagesOnThread(sourceImages: imagesArray, filter: .noir, qos: .background) { images in
+            self.imagesArray = images.map({ image in
+                UIImage (cgImage: image!)
+            })
+            
+            let end = DispatchTime.now()
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            let timeInterval = Double(end.uptimeNanoseconds - start.uptimeNanoseconds)
+                        print("Time = \(timeInterval / 1_000_000_000)")
+            //time userInteractive = 2.652654708
+            //time userInitiated = 2.906800042
+            //time default = 2.785610625
+            //time utility = 3.348122292
+            //time background = 8.091674333
+        }
     }
     
     func addViews(){
@@ -74,7 +94,7 @@ extension PhotosViewController : UICollectionViewDelegateFlowLayout {
 }
 extension PhotosViewController: ImageLibrarySubscriber {
     func receive(images: [UIImage]) {
-        imagesArray = images
+ //       imagesArray = images
         collectionView.reloadData()
     }
 }
