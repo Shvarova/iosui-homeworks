@@ -104,6 +104,21 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    private lazy var bruteForceButton: CustomButton = {
+        let button = CustomButton (title: "Brute Force", titleColor: .white, cornerRadius: 10)
+        button.backgroundColor = .red
+        button.action = getPassword
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.isHidden = true
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -128,6 +143,30 @@ class LoginViewController: UIViewController {
     
     @objc func hideKeyboard(){
         view.endEditing(true)
+    }
+    
+    func getPassword() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+            let randomPassword = String((0 ..< 5).map{ _ in letters.randomElement()!})
+            print ("Password is \(randomPassword)")
+            let possibleCharacters = letters.map { String($0) }
+            var password = ""
+            
+            while password != randomPassword {
+                password = BrutForce.generatePassword(password, fromArray: possibleCharacters)
+                print ("Password is \(password)")
+            }
+            DispatchQueue.main.async {
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
+                self.passwordTextField.text = password
+                self.passwordTextField.isSecureTextEntry = false
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -197,7 +236,15 @@ class LoginViewController: UIViewController {
             logInButton.topAnchor.constraint(equalTo: loginPasswordStackView.bottomAnchor, constant: 16),
             logInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             logInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            logInButton.heightAnchor.constraint(equalToConstant: 50)
+            logInButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            bruteForceButton.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 16),
+            bruteForceButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            bruteForceButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            bruteForceButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
     
@@ -206,7 +253,7 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(contentView)
         loginPasswordStackView.addArrangedSubview(loginTextField)
         loginPasswordStackView.addArrangedSubview(passwordTextField)
-        contentView.addSubviews([logoImageView, loginPasswordStackView, logInButton])
+        contentView.addSubviews([logoImageView, loginPasswordStackView, logInButton, bruteForceButton, activityIndicator])
     }
 }
 

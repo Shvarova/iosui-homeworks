@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		361580112993F6B3004FF4F8 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361580102993F6B3004FF4F8 /* CustomButton.swift */; };
 		36158014299401E0004FF4F8 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36158013299401E0004FF4F8 /* FeedModel.swift */; };
+		3630845529AE51C9005C5616 /* BrutForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3630845429AE51C9005C5616 /* BrutForce.swift */; };
 		36507D8429705DBC001C6F98 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36507D8329705DBC001C6F98 /* PhotosTableViewCell.swift */; };
 		36507D8629705E20001C6F98 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36507D8529705E20001C6F98 /* PhotosViewController.swift */; };
 		36507D8829706006001C6F98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36507D8729706006001C6F98 /* Constants.swift */; };
@@ -16,6 +17,7 @@
 		365E5986299FB78B0001ABFC /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365E5985299FB78B0001ABFC /* MainCoordinator.swift */; };
 		365E5988299FBD530001ABFC /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365E5987299FBD530001ABFC /* FeedCoordinator.swift */; };
 		365E598A299FBD9D0001ABFC /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365E5989299FBD9D0001ABFC /* LoginCoordinator.swift */; };
+		365E599129AE44EC0001ABFC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365E599029AE44EC0001ABFC /* String.swift */; };
 		36661B7D295D059400016070 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36661B7C295D059400016070 /* LoginViewController.swift */; };
 		36661B80295DE56D00016070 /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36661B7F295DE56D00016070 /* ExtensionUIView.swift */; };
 		36661B82295F270100016070 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36661B81295F270100016070 /* PostTableViewCell.swift */; };
@@ -96,6 +98,7 @@
 /* Begin PBXFileReference section */
 		361580102993F6B3004FF4F8 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		36158013299401E0004FF4F8 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		3630845429AE51C9005C5616 /* BrutForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrutForce.swift; sourceTree = "<group>"; };
 		36507D8329705DBC001C6F98 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		36507D8529705E20001C6F98 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		36507D8729706006001C6F98 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 		365E5985299FB78B0001ABFC /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		365E5987299FBD530001ABFC /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		365E5989299FBD9D0001ABFC /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		365E599029AE44EC0001ABFC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		36661B7C295D059400016070 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		36661B7F295DE56D00016070 /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
 		36661B81295F270100016070 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
@@ -204,12 +208,21 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		365E598D29AE436E0001ABFC /* BrutForce */ = {
+			isa = PBXGroup;
+			children = (
+				3630845429AE51C9005C5616 /* BrutForce.swift */,
+			);
+			path = BrutForce;
+			sourceTree = "<group>";
+		};
 		36661B7E295DE53B00016070 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				36507D8729706006001C6F98 /* Constants.swift */,
 				36661B7F295DE56D00016070 /* ExtensionUIView.swift */,
 				361580102993F6B3004FF4F8 /* CustomButton.swift */,
+				365E599029AE44EC0001ABFC /* String.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -268,6 +281,7 @@
 		36944EE12986D201009E1ED2 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				365E598D29AE436E0001ABFC /* BrutForce */,
 				365E598B299FBDAB0001ABFC /* Coordinator */,
 				36B22EAE299BD2A9004DEF0B /* View */,
 				36B22EAF299BD2BF004DEF0B /* Model */,
@@ -664,12 +678,14 @@
 				368400B828E2EE7600CDDEEB /* ProfileViewController.swift in Sources */,
 				36B22EC4299BD639004DEF0B /* RootCoordinator.swift in Sources */,
 				368400A028E2EC4E00CDDEEB /* AppDelegate.swift in Sources */,
+				3630845529AE51C9005C5616 /* BrutForce.swift in Sources */,
 				36661B7D295D059400016070 /* LoginViewController.swift in Sources */,
 				36661B80295DE56D00016070 /* ExtensionUIView.swift in Sources */,
 				36944EE029858D20009E1ED2 /* CurrentUserService.swift in Sources */,
 				36944EE92986D4BD009E1ED2 /* LoginFactory.swift in Sources */,
 				368400C628EA3B0B00CDDEEB /* ProfileHeaderView.swift in Sources */,
 				36507D8A297061ED001C6F98 /* PhotosCollectionViewCell.swift in Sources */,
+				365E599129AE44EC0001ABFC /* String.swift in Sources */,
 				36944EEB2986D4F4009E1ED2 /* MyLoginFactory.swift in Sources */,
 				36F789942971AE360034D100 /* PhotosModel.swift in Sources */,
 				36944EDE29858C17009E1ED2 /* TestUserService.swift in Sources */,
