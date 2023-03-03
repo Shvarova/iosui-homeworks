@@ -13,10 +13,13 @@ protocol FeedOutput: AnyObject {
 
 class FeedViewController: UIViewController {
     
+    private var timer: Timer?
+    private var timePassed = 0
+    
     var output: FeedOutput?
-   private let feedModel = FeedModel ()
-
-   private lazy var button1: UIButton = {
+    private let feedModel = FeedModel ()
+    
+    private lazy var button1: UIButton = {
         let button = UIButton ()
         button.setTitle("Новый пост 1", for: .normal)
         button.backgroundColor = .systemBlue
@@ -71,13 +74,14 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .white
         title = "Лента новостей"
         setupView()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
     }
-        
+    
     private func setupView () {
         view.addSubviews([stackView, textField, checkGuessButton])
         stackView.addArrangedSubview(button1)
         stackView.addArrangedSubview(button2)
-
+        
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -105,6 +109,19 @@ class FeedViewController: UIViewController {
     
     @objc func buttonClicked() {
         output?.postButtonTouched()
+    }
+    
+    @objc func runTimer() {
+        timePassed += 1
+        if timePassed == 5 {
+            let alert = UIAlertController(title: "Хотите получать подборку самых интересных новостей?", message: "будем ежедневно присылать на почту указанную при регистрации", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Да, спасибо", style: .default)
+            let cancelAction = UIAlertAction(title: "Нет, не хочу", style: .destructive)
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            present(alert, animated: true)
+            timer?.invalidate()
+        }
     }
 }
 

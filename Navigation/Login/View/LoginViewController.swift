@@ -152,13 +152,11 @@ class LoginViewController: UIViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
             let randomPassword = String((0 ..< 5).map{ _ in letters.randomElement()!})
-            print ("Password is \(randomPassword)")
             let possibleCharacters = letters.map { String($0) }
             var password = ""
             
             while password != randomPassword {
                 password = BrutForce.generatePassword(password, fromArray: possibleCharacters)
-                print ("Password is \(password)")
             }
             DispatchQueue.main.async {
                 self.activityIndicator.isHidden = true
