@@ -14,7 +14,6 @@ protocol FeedOutput: AnyObject {
 class FeedViewController: UIViewController {
     
     private var timer: Timer?
-    private var timePassed = 0
     
     var output: FeedOutput?
     private let feedModel = FeedModel ()
@@ -74,7 +73,19 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .white
         title = "Лента новостей"
         setupView()
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { _ in
+            let alert = UIAlertController(title: "Хотите получать подборку самых интересных новостей?", message: "будем ежедневно присылать на почту указанную при регистрации", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Да, спасибо", style: .default)
+            let cancelAction = UIAlertAction(title: "Нет, не хочу", style: .destructive)
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            self.present(alert, animated: true)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
     }
     
     private func setupView () {
@@ -110,18 +121,6 @@ class FeedViewController: UIViewController {
     @objc func buttonClicked() {
         output?.postButtonTouched()
     }
-    
-    @objc func runTimer() {
-        timePassed += 1
-        if timePassed == 5 {
-            let alert = UIAlertController(title: "Хотите получать подборку самых интересных новостей?", message: "будем ежедневно присылать на почту указанную при регистрации", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Да, спасибо", style: .default)
-            let cancelAction = UIAlertAction(title: "Нет, не хочу", style: .destructive)
-            alert.addAction(okAction)
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
-            timer?.invalidate()
-        }
-    }
 }
+
 

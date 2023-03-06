@@ -16,13 +16,6 @@ class LoginViewController: UIViewController {
     var output: LoginOutput?
     var loginDelegate: LoginViewControllerDelegate?
     
-    private lazy var loginErrorAlert: UIAlertController = {
-        let alert = UIAlertController (title: "Неверный логин или пароль", message: nil, preferredStyle: .alert)
-        let action = UIAlertAction (title: "Ok", style: .cancel)
-        alert.addAction(action)
-        return alert
-    }()
-    
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -134,9 +127,15 @@ class LoginViewController: UIViewController {
         guard let password = passwordTextField.text else { return }
         guard let loginDelegate = loginDelegate else { return }
         
-        if !loginDelegate.check(login: login, password: password) {
-            showAlert()
+        do {
+            try loginDelegate.check(login: login, password: password)
+        } catch CustomError.invalidUser {
+            showAlert(title: "Неверный логин или пароль")
             return
+        } catch CustomError.network{
+            showAlert(title: "Слабое интернет-соединение")
+        } catch {
+            showAlert(title: "Неизвестная ошибка")
         }
         output?.loginButtonTouched()
     }
@@ -204,8 +203,11 @@ class LoginViewController: UIViewController {
         self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
-    private func showAlert () {
-        present(loginErrorAlert, animated: true)
+    private func showAlert (title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let action = UIAlertAction (title: "ok", style: .cancel)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
     
     private func setupConstraints() {

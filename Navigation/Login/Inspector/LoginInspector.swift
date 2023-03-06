@@ -8,8 +8,8 @@
 import Foundation
 
 struct LoginInspector: LoginViewControllerDelegate {
-    func check (login: String, password: String) -> Bool {
+    func check (login: String, password: String) throws {
         let checker = Checker.shared
-        return checker.check (login: login, password: password)
+        try checker.check (login: login, password: password)
     }
 }

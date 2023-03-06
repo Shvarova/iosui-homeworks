@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum CustomError: Error {
+    case invalidUser
+    case network 
+}
 
 class Checker: LoginViewControllerDelegate {
     
@@ -17,8 +21,11 @@ class Checker: LoginViewControllerDelegate {
 
     private init() {}
 
-    func check (login: String, password: String) -> Bool {
-        return login == currentLogin && password == currentPassword ? true : false
+    func check (login: String, password: String) throws {
+        if login != currentLogin || password != currentPassword {
+            throw CustomError.invalidUser
+        }
+        
     }
 }
 
