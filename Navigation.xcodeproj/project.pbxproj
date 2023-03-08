@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		360DEBDA29B8BC9500D0A6BC /* don-t-stop-me-now.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */; };
+		360DEBDC29B8BCD400D0A6BC /* the-show-must-go-on.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */; };
+		360DEBDE29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */; };
+		360DEBE029B8BCEE00D0A6BC /* bicycle-race.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDF29B8BCEE00D0A6BC /* bicycle-race.mp3 */; };
+		360DEBE229B8BCFC00D0A6BC /* radio-ga-ga.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBE129B8BCFC00D0A6BC /* radio-ga-ga.mp3 */; };
+		360DEBE529B8CCFB00D0A6BC /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360DEBE429B8CCFB00D0A6BC /* NewPostViewController.swift */; };
+		360DEBE929B8CD5600D0A6BC /* NewPostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360DEBE829B8CD5600D0A6BC /* NewPostCoordinator.swift */; };
 		361580112993F6B3004FF4F8 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361580102993F6B3004FF4F8 /* CustomButton.swift */; };
 		36158014299401E0004FF4F8 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36158013299401E0004FF4F8 /* FeedModel.swift */; };
 		3630845529AE51C9005C5616 /* BrutForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3630845429AE51C9005C5616 /* BrutForce.swift */; };
@@ -26,7 +33,7 @@
 		368400AC28E2EC5000CDDEEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 368400AA28E2EC5000CDDEEB /* LaunchScreen.storyboard */; };
 		368400B628E2EE4E00CDDEEB /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368400B528E2EE4E00CDDEEB /* FeedViewController.swift */; };
 		368400B828E2EE7600CDDEEB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368400B728E2EE7600CDDEEB /* ProfileViewController.swift */; };
-		368400BA28E2EE9500CDDEEB /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368400B928E2EE9500CDDEEB /* NewPostViewController.swift */; };
+		368400BA28E2EE9500CDDEEB /* AudioPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368400B928E2EE9500CDDEEB /* AudioPostViewController.swift */; };
 		368400BC28E2EEC400CDDEEB /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368400BB28E2EEC400CDDEEB /* InfoViewController.swift */; };
 		368400BE28E2EF0200CDDEEB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 368400BD28E2EF0200CDDEEB /* .gitignore */; };
 		368400C628EA3B0B00CDDEEB /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368400C528EA3B0B00CDDEEB /* ProfileHeaderView.swift */; };
@@ -42,7 +49,7 @@
 		36B22EC4299BD639004DEF0B /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B22EC3299BD639004DEF0B /* RootCoordinator.swift */; };
 		36B22EC6299BD651004DEF0B /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B22EC5299BD651004DEF0B /* AppCoordinator.swift */; };
 		36B22ECB299BE4D9004DEF0B /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B22ECA299BE4D9004DEF0B /* ProfileCoordinator.swift */; };
-		36B22ECE299BE564004DEF0B /* NewPostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B22ECD299BE564004DEF0B /* NewPostCoordinator.swift */; };
+		36B22ECE299BE564004DEF0B /* AudioPostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B22ECD299BE564004DEF0B /* AudioPostCoordinator.swift */; };
 		36B22ED0299BE991004DEF0B /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B22ECF299BE991004DEF0B /* ProfileViewModel.swift */; };
 		36B22ED4299BEC05004DEF0B /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B22ED3299BEC05004DEF0B /* ProfileModel.swift */; };
 		36B22ED7299BF089004DEF0B /* PhotosCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B22ED6299BF089004DEF0B /* PhotosCoordinator.swift */; };
@@ -96,6 +103,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "don-t-stop-me-now.mp3"; sourceTree = "<group>"; };
+		360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "the-show-must-go-on.mp3"; sourceTree = "<group>"; };
+		360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bohemian-rhapsody.mp3"; sourceTree = "<group>"; };
+		360DEBDF29B8BCEE00D0A6BC /* bicycle-race.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bicycle-race.mp3"; sourceTree = "<group>"; };
+		360DEBE129B8BCFC00D0A6BC /* radio-ga-ga.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "radio-ga-ga.mp3"; sourceTree = "<group>"; };
+		360DEBE429B8CCFB00D0A6BC /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		360DEBE829B8CD5600D0A6BC /* NewPostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostCoordinator.swift; sourceTree = "<group>"; };
 		361580102993F6B3004FF4F8 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		36158013299401E0004FF4F8 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		3630845429AE51C9005C5616 /* BrutForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrutForce.swift; sourceTree = "<group>"; };
@@ -117,7 +131,7 @@
 		368400AD28E2EC5000CDDEEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		368400B528E2EE4E00CDDEEB /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		368400B728E2EE7600CDDEEB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		368400B928E2EE9500CDDEEB /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		368400B928E2EE9500CDDEEB /* AudioPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPostViewController.swift; sourceTree = "<group>"; };
 		368400BB28E2EEC400CDDEEB /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		368400BD28E2EF0200CDDEEB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		368400C528EA3B0B00CDDEEB /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -132,7 +146,7 @@
 		36B22EC3299BD639004DEF0B /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		36B22EC5299BD651004DEF0B /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		36B22ECA299BE4D9004DEF0B /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
-		36B22ECD299BE564004DEF0B /* NewPostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostCoordinator.swift; sourceTree = "<group>"; };
+		36B22ECD299BE564004DEF0B /* AudioPostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPostCoordinator.swift; sourceTree = "<group>"; };
 		36B22ECF299BE991004DEF0B /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		36B22ED3299BEC05004DEF0B /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		36B22ED6299BF089004DEF0B /* PhotosCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCoordinator.swift; sourceTree = "<group>"; };
@@ -174,6 +188,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		360DEBD829B8BC1A00D0A6BC /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */,
+				360DEBDF29B8BCEE00D0A6BC /* bicycle-race.mp3 */,
+				360DEBE129B8BCFC00D0A6BC /* radio-ga-ga.mp3 */,
+				360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */,
+				360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		360DEBE329B8CCAF00D0A6BC /* NewPost */ = {
+			isa = PBXGroup;
+			children = (
+				360DEBE729B8CD2C00D0A6BC /* Coordinator */,
+				360DEBE629B8CD0A00D0A6BC /* View */,
+			);
+			path = NewPost;
+			sourceTree = "<group>";
+		};
+		360DEBE629B8CD0A00D0A6BC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				360DEBE429B8CCFB00D0A6BC /* NewPostViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		360DEBE729B8CD2C00D0A6BC /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				360DEBE829B8CD5600D0A6BC /* NewPostCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		36158012299401C9004FF4F8 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,8 +308,10 @@
 				36B22EA9299BD223004DEF0B /* Photos */,
 				368400C428EA3AD600CDDEEB /* Profile */,
 				36158012299401C9004FF4F8 /* Feed */,
-				36B22EB4299BD3F1004DEF0B /* NewPost */,
+				36B22EB4299BD3F1004DEF0B /* AudioPost */,
+				360DEBE329B8CCAF00D0A6BC /* NewPost */,
 				36B22EB5299BD400004DEF0B /* Info */,
+				360DEBD829B8BC1A00D0A6BC /* Music */,
 				368400A828E2EC5000CDDEEB /* Assets.xcassets */,
 				368400AA28E2EC5000CDDEEB /* LaunchScreen.storyboard */,
 				368400AD28E2EC5000CDDEEB /* Info.plist */,
@@ -381,13 +434,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		36B22EB4299BD3F1004DEF0B /* NewPost */ = {
+		36B22EB4299BD3F1004DEF0B /* AudioPost */ = {
 			isa = PBXGroup;
 			children = (
 				36B22ECC299BE54B004DEF0B /* Coordinator */,
 				36B22EBB299BD466004DEF0B /* View */,
 			);
-			path = NewPost;
+			path = AudioPost;
 			sourceTree = "<group>";
 		};
 		36B22EB5299BD400004DEF0B /* Info */ = {
@@ -418,7 +471,7 @@
 		36B22EBB299BD466004DEF0B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				368400B928E2EE9500CDDEEB /* NewPostViewController.swift */,
+				368400B928E2EE9500CDDEEB /* AudioPostViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -469,7 +522,7 @@
 		36B22ECC299BE54B004DEF0B /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				36B22ECD299BE564004DEF0B /* NewPostCoordinator.swift */,
+				36B22ECD299BE564004DEF0B /* AudioPostCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -632,8 +685,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				368400AC28E2EC5000CDDEEB /* LaunchScreen.storyboard in Resources */,
+				360DEBE029B8BCEE00D0A6BC /* bicycle-race.mp3 in Resources */,
+				360DEBDC29B8BCD400D0A6BC /* the-show-must-go-on.mp3 in Resources */,
+				360DEBDE29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 in Resources */,
+				360DEBDA29B8BC9500D0A6BC /* don-t-stop-me-now.mp3 in Resources */,
 				368400BE28E2EF0200CDDEEB /* .gitignore in Resources */,
 				368400A928E2EC5000CDDEEB /* Assets.xcassets in Resources */,
+				360DEBE229B8BCFC00D0A6BC /* radio-ga-ga.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,11 +728,12 @@
 				36B22EC6299BD651004DEF0B /* AppCoordinator.swift in Sources */,
 				36B22ECB299BE4D9004DEF0B /* ProfileCoordinator.swift in Sources */,
 				36944EDC2985433F009E1ED2 /* User.swift in Sources */,
-				36B22ECE299BE564004DEF0B /* NewPostCoordinator.swift in Sources */,
+				36B22ECE299BE564004DEF0B /* AudioPostCoordinator.swift in Sources */,
 				368400B628E2EE4E00CDDEEB /* FeedViewController.swift in Sources */,
 				36B22ED0299BE991004DEF0B /* ProfileViewModel.swift in Sources */,
 				365E5988299FBD530001ABFC /* FeedCoordinator.swift in Sources */,
 				36B22ED7299BF089004DEF0B /* PhotosCoordinator.swift in Sources */,
+				360DEBE529B8CCFB00D0A6BC /* NewPostViewController.swift in Sources */,
 				368400B828E2EE7600CDDEEB /* ProfileViewController.swift in Sources */,
 				36B22EC4299BD639004DEF0B /* RootCoordinator.swift in Sources */,
 				368400A028E2EC4E00CDDEEB /* AppDelegate.swift in Sources */,
@@ -691,10 +750,11 @@
 				36944EDE29858C17009E1ED2 /* TestUserService.swift in Sources */,
 				361580112993F6B3004FF4F8 /* CustomButton.swift in Sources */,
 				365E598A299FBD9D0001ABFC /* LoginCoordinator.swift in Sources */,
+				360DEBE929B8CD5600D0A6BC /* NewPostCoordinator.swift in Sources */,
 				36661B82295F270100016070 /* PostTableViewCell.swift in Sources */,
 				36158014299401E0004FF4F8 /* FeedModel.swift in Sources */,
 				368400BC28E2EEC400CDDEEB /* InfoViewController.swift in Sources */,
-				368400BA28E2EE9500CDDEEB /* NewPostViewController.swift in Sources */,
+				368400BA28E2EE9500CDDEEB /* AudioPostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,10 +36,20 @@ final class FeedCoordinator: AppCoordinator {
         coordinator.start()
         childs.append(coordinator)
     }
+    
+    fileprivate func showAudioPostViewController() {
+        let coordinator = AudioPostCoordinator(navigationController: feedNC)
+        coordinator.start()
+        childs.append(coordinator)
+        }
 }
 
 extension FeedCoordinator: FeedOutput {
-    func postButtonTouched() {
+    func newPostButtonTouched() {
         showNewPostViewController()
+    }
+
+    func audioPostButtonTouched() {
+        showAudioPostViewController()
     }
 }

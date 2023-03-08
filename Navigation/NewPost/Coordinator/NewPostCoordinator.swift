@@ -2,10 +2,14 @@
 //  NewPostCoordinator.swift
 //  Navigation
 //
-//  Created by Дина Шварова on 14.02.2023.
+//  Created by Дина Шварова on 08.03.2023.
 //
 
 import UIKit
+
+protocol NewPostOutput {
+    func buttonInfoClicked()
+}
 
 final class NewPostCoordinator: AppCoordinator {
     
@@ -35,3 +39,4 @@ extension NewPostCoordinator: NewPostOutput {
         showInfoViewController()
     }
 }
+

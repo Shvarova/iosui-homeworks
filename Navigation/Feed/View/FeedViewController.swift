@@ -8,7 +8,8 @@
 import UIKit
 
 protocol FeedOutput: AnyObject {
-    func postButtonTouched()
+    func newPostButtonTouched()
+    func audioPostButtonTouched()
 }
 
 class FeedViewController: UIViewController {
@@ -20,11 +21,11 @@ class FeedViewController: UIViewController {
     
     private lazy var button1: UIButton = {
         let button = UIButton ()
-        button.setTitle("Новый пост 1", for: .normal)
+        button.setTitle("5 хитов Queen", for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 4
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+        button.addTarget(self, action: #selector(audioButtonClicked), for: .touchUpInside)
         button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         return button
     }()
@@ -35,7 +36,7 @@ class FeedViewController: UIViewController {
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 4
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+        button.addTarget(self, action: #selector(newPostButtonClicked), for: .touchUpInside)
         button.heightAnchor.constraint(equalToConstant: 40).isActive = true
         return button
     } ()
@@ -94,7 +95,8 @@ class FeedViewController: UIViewController {
         stackView.addArrangedSubview(button2)
         
         NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             textField.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 24),
@@ -118,8 +120,12 @@ class FeedViewController: UIViewController {
         }
     }
     
-    @objc func buttonClicked() {
-        output?.postButtonTouched()
+    @objc func audioButtonClicked() {
+        output?.audioPostButtonTouched()
+    }
+    
+    @objc func newPostButtonClicked() {
+        output?.newPostButtonTouched()
     }
 }
 

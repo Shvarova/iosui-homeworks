@@ -13,3 +13,4 @@ struct LoginInspector: LoginViewControllerDelegate {
         try checker.check (login: login, password: password)
     }
 }
+

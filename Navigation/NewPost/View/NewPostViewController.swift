@@ -2,21 +2,21 @@
 //  NewPostViewController.swift
 //  Navigation
 //
-//  Created by Дина Шварова on 26.09.2022.
+//  Created by Дина Шварова on 08.03.2023.
 //
 
 import UIKit
 
-protocol NewPostOutput {
-    func buttonInfoClicked()
-}
-
 class NewPostViewController: UIViewController {
     
     var output: NewPostOutput?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+    }
+    
+    private func setupView() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .white
         let titleLabel = UILabel()
@@ -29,6 +29,6 @@ class NewPostViewController: UIViewController {
     }
     
     @objc func buttonInfoClicked() {
-        output?.buttonInfoClicked()
-    }
+            output?.buttonInfoClicked()
+        }
 }
