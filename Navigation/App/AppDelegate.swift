@@ -20,6 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         let rootCoordinator = RootCoordinator(navigationController: navigationController)
         rootCoordinator.start()
+        var config = AppConfiguration.people
+        let random = Int.random(in: 0 ... 2)
+        switch random {
+        case 0: config = AppConfiguration.starships
+        case 1: config = AppConfiguration.planets
+        default: break
+        }
+        NetworkService.request(configurations: config)
         return true
     }
 }

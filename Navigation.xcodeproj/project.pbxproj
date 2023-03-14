@@ -14,6 +14,7 @@
 		360DEBE229B8BCFC00D0A6BC /* radio-ga-ga.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBE129B8BCFC00D0A6BC /* radio-ga-ga.mp3 */; };
 		360DEBE529B8CCFB00D0A6BC /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360DEBE429B8CCFB00D0A6BC /* NewPostViewController.swift */; };
 		360DEBE929B8CD5600D0A6BC /* NewPostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360DEBE829B8CD5600D0A6BC /* NewPostCoordinator.swift */; };
+		360DEBEC29C0B83B00D0A6BC /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360DEBEB29C0B83B00D0A6BC /* NetworkService.swift */; };
 		361580112993F6B3004FF4F8 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361580102993F6B3004FF4F8 /* CustomButton.swift */; };
 		36158014299401E0004FF4F8 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36158013299401E0004FF4F8 /* FeedModel.swift */; };
 		3630845529AE51C9005C5616 /* BrutForce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3630845429AE51C9005C5616 /* BrutForce.swift */; };
@@ -110,6 +111,7 @@
 		360DEBE129B8BCFC00D0A6BC /* radio-ga-ga.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "radio-ga-ga.mp3"; sourceTree = "<group>"; };
 		360DEBE429B8CCFB00D0A6BC /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		360DEBE829B8CD5600D0A6BC /* NewPostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostCoordinator.swift; sourceTree = "<group>"; };
+		360DEBEB29C0B83B00D0A6BC /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		361580102993F6B3004FF4F8 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		36158013299401E0004FF4F8 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		3630845429AE51C9005C5616 /* BrutForce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrutForce.swift; sourceTree = "<group>"; };
@@ -225,6 +227,14 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		360DEBEA29C0B7F600D0A6BC /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				360DEBEB29C0B83B00D0A6BC /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
 		36158012299401C9004FF4F8 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +311,7 @@
 		3684009E28E2EC4E00CDDEEB /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				360DEBEA29C0B7F600D0A6BC /* NetworkService */,
 				36B22EC2299BD60B004DEF0B /* Coordinator */,
 				36B22EC1299BD5F7004DEF0B /* App */,
 				36661B7E295DE53B00016070 /* Helpers */,
@@ -726,6 +737,7 @@
 				36507D8629705E20001C6F98 /* PhotosViewController.swift in Sources */,
 				365E5986299FB78B0001ABFC /* MainCoordinator.swift in Sources */,
 				36B22EC6299BD651004DEF0B /* AppCoordinator.swift in Sources */,
+				360DEBEC29C0B83B00D0A6BC /* NetworkService.swift in Sources */,
 				36B22ECB299BE4D9004DEF0B /* ProfileCoordinator.swift in Sources */,
 				36944EDC2985433F009E1ED2 /* User.swift in Sources */,
 				36B22ECE299BE564004DEF0B /* AudioPostCoordinator.swift in Sources */,
