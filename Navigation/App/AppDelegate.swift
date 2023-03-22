@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseApp.configure()
         window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = UINavigationController()
         navigationController.navigationBar.isHidden = true
@@ -29,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         NetworkService.request(configurations: config)
         return true
+    }
+    func applicationWillTerminate(_ application: UIApplication) {
+        try? Auth.auth().signOut()
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol LoginOutput: AnyObject {
     func loginButtonTouched()
@@ -58,7 +59,7 @@ class LoginViewController: UIViewController {
     
     private lazy var loginTextField: UITextField = {
         let textField = UITextField()
-        textField.text = "admin"
+        textField.text = "admin@mail.ru"
         textField.backgroundColor = .systemGray6
         textField.textColor = .black
         textField.autocapitalizationType = .none
@@ -74,7 +75,7 @@ class LoginViewController: UIViewController {
     
     private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.text = "admin"
+        textField.text = "admin123"
         textField.backgroundColor = .systemGray6
         textField.isSecureTextEntry = true
         textField.textColor = .black
@@ -92,7 +93,15 @@ class LoginViewController: UIViewController {
     private lazy var logInButton: CustomButton = {
         let button = CustomButton (title: "Log In", titleColor: .white, cornerRadius: 10)
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
-        button.action = goToProfile
+        button.action = login
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var signupButton: CustomButton = {
+        let button = CustomButton (title: "Sign up", titleColor: .white, cornerRadius: 10)
+        button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
+        button.action = register
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -112,6 +121,15 @@ class LoginViewController: UIViewController {
         return activityIndicator
     }()
     
+    private lazy var buttonsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.addArrangedSubviews(logInButton, signupButton, bruteForceButton)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -121,30 +139,66 @@ class LoginViewController: UIViewController {
         contentView.addGestureRecognizer(tap)
     }
     
-    @objc func goToProfile() {
-        
-        guard let login = loginTextField.text else { return }
-        guard let password = passwordTextField.text else { return }
-        guard let loginDelegate = loginDelegate else { return }
-        
-        do {
-            try loginDelegate.check(login: login, password: password)
-        } catch CustomError.invalidUser {
-            showAlert(title: "Неверный логин или пароль")
-            return
-        } catch CustomError.network{
-            showAlert(title: "Слабое интернет-соединение")
-        } catch {
-            showAlert(title: "Неизвестная ошибка")
-        }
-        output?.loginButtonTouched()
-    }
-    
     @objc func hideKeyboard(){
         view.endEditing(true)
     }
     
-    func getPassword() {
+    @objc func login() {
+        
+        guard let login = loginTextField.text, !login.isEmpty else {
+            showAlert(title: "Что-то пошло не так", message: "Поля 'логин' и 'пароль' не могут быть пустыми")
+            return
+        }
+        guard let password = passwordTextField.text, !password.isEmpty else {
+            showAlert(title: "Что-то пошло не так", message: "Поля 'логин' и 'пароль' не могут быть пустыми")
+            return
+        }
+        
+        guard login.isValidEmail() else {
+            showAlert(title: "Что-то пошло не так", message: "Введите корректный email")
+            return
+        }
+        loginDelegate?.checkCredentials (withEmail: login, password: password) { result, error in
+            if let error = error {
+                self.showAlert(title: "Что-то пошло не так", message: error.localizedDescription)
+            }
+            if let _ = result {
+                self.goToProfile()
+            }
+        }
+    }
+    
+    @objc private func register () {
+        guard let login = loginTextField.text, !login.isEmpty else {
+            showAlert(title: "Что-то пошло не так", message: "Поля 'логин' и 'пароль' не могут быть пустыми")
+            return
+        }
+        guard let password = passwordTextField.text, !password.isEmpty else {
+            showAlert(title: "Что-то пошло не так", message: "Поля 'логин' и 'пароль' не могут быть пустыми")
+            return
+        }
+        
+        guard login.isValidEmail() else {
+            showAlert(title: "Что-то пошло не так", message: "Введите корректный email")
+            return
+        }
+        
+        loginDelegate?.signUp (withEmail: login, password: password) { result, error in
+            if let error = error {
+                self.showAlert(title: "Что-то пошло не так", message: error.localizedDescription)
+            }
+            
+            if let _ = result {
+                self.goToProfile()
+            }
+        }
+    }
+    
+    private func goToProfile() {
+        output?.loginButtonTouched()
+    }
+    
+    private func getPassword() {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
@@ -166,45 +220,8 @@ class LoginViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.didShowKeyboard(_:)),
-                                               name: UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.didHideKeyboard(_:)),
-                                               name: UIResponder.keyboardWillHideNotification,
-                                               object: nil)
-    }
-    
-    @objc private func didShowKeyboard(_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            
-            let loginButtonBottomPointY = self.stackView.frame.origin.y + self.logInButton.frame.origin.y + self.logInButton.frame.height
-            let keyboardOriginY = self.view.frame.height - keyboardHeight
-            
-            let yOffset = keyboardOriginY < loginButtonBottomPointY
-            ? loginButtonBottomPointY - keyboardOriginY + 16
-            : 0
-            
-            self.scrollView.contentOffset = CGPoint(x: 0, y: yOffset)
-        }
-    }
-    
-    @objc private func didHideKeyboard(_ notification: Notification) {
-        self.forcedHidingKeyboard()
-    }
-    
-    @objc private func forcedHidingKeyboard() {
-        self.view.endEditing(true)
-        self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-    }
-    
-    private func showAlert (title: String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+    private func showAlert (title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction (title: "ok", style: .cancel)
         alert.addAction(action)
         present(alert, animated: true)
@@ -233,14 +250,12 @@ class LoginViewController: UIViewController {
             loginPasswordStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             loginPasswordStackView.heightAnchor.constraint(equalToConstant: 100),
             
-            logInButton.topAnchor.constraint(equalTo: loginPasswordStackView.bottomAnchor, constant: 16),
-            logInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            logInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            logInButton.heightAnchor.constraint(equalToConstant: 50),
+            buttonsStackView.topAnchor.constraint(equalTo: loginPasswordStackView.bottomAnchor, constant: 16),
+            buttonsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            buttonsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
-            bruteForceButton.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 16),
-            bruteForceButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            bruteForceButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            logInButton.heightAnchor.constraint(equalToConstant: 50),
+            signupButton.heightAnchor.constraint(equalToConstant: 50),
             bruteForceButton.heightAnchor.constraint(equalToConstant: 50),
             
             activityIndicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -253,7 +268,7 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(contentView)
         loginPasswordStackView.addArrangedSubview(loginTextField)
         loginPasswordStackView.addArrangedSubview(passwordTextField)
-        contentView.addSubviews([logoImageView, loginPasswordStackView, logInButton, bruteForceButton, activityIndicator])
+        contentView.addSubviews([logoImageView, loginPasswordStackView, buttonsStackView, activityIndicator])
     }
 }
 

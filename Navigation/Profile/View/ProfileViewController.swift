@@ -7,6 +7,7 @@
 
 import UIKit
 import StorageService
+import FirebaseAuth
 
 protocol ProfileOutput {
     func photosCellSelected()
@@ -59,6 +60,13 @@ final class ProfileViewController: UIViewController {
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.title = "Профиль"
+        let signOut = UIBarButtonItem(title: "sign out", style: .done, target: self, action: #selector(signOut))
+        navigationItem.leftBarButtonItem = signOut
+    }
+    
+    @objc func signOut() {
+        try? Auth.auth().signOut()
+        navigationController?.popViewController(animated: true)
     }
     
     private func setupView() {
