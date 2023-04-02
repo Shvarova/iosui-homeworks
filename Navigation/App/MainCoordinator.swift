@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TapBarCoordinator: AppCoordinator {
+    func getNavigationController () -> UINavigationController
+}
+
 final class MainCoordinator: AppCoordinator {
     
     var childs: [AppCoordinator] = []
@@ -16,7 +20,7 @@ final class MainCoordinator: AppCoordinator {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        let loginCoordinator = LoginCoordinator()
+        let loginCoordinator: TapBarCoordinator = RealmService.shared.isUserAuthorized() ? ProfileCoordinator() : LoginCoordinator()
         let feedCoordinator = FeedCoordinator()
         
         childs = [loginCoordinator, feedCoordinator]
@@ -24,14 +28,11 @@ final class MainCoordinator: AppCoordinator {
         let tabBarController = UITabBarController()
         tabBarController.tabBar.backgroundColor = .white
         
-        tabBarController.viewControllers = [feedCoordinator.getViewController(), loginCoordinator.getViewController()]
+        tabBarController.viewControllers = [feedCoordinator.getNavigationController(), loginCoordinator.getNavigationController()]
         controller = tabBarController
     }
     
     func start() {
-        for child in childs {
-            child.start()
-        }
         navigationController.pushViewController(controller, animated: true)
     }
 }

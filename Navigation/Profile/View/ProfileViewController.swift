@@ -11,6 +11,7 @@ import FirebaseAuth
 
 protocol ProfileOutput {
     func photosCellSelected()
+    func signOutButtonTouched()
 }
 
 final class ProfileViewController: UIViewController {
@@ -66,13 +67,13 @@ final class ProfileViewController: UIViewController {
     
     @objc func signOut() {
         try? Auth.auth().signOut()
-        navigationController?.popViewController(animated: true)
+        output?.signOutButtonTouched()
     }
     
     private func setupView() {
         
 #if DEBUG
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemMint
 #else
         view.backgroundColor = .white
 #endif
@@ -122,4 +123,5 @@ extension ProfileViewController: UITableViewDataSource {
         return cell
     }
 }
+
 

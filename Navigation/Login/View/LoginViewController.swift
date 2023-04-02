@@ -163,6 +163,7 @@ class LoginViewController: UIViewController {
                 self.showAlert(title: "Что-то пошло не так", message: error.localizedDescription)
             }
             if let _ = result {
+                RealmService.shared.write(login: login, password: password)
                 self.goToProfile()
             }
         }
@@ -189,6 +190,7 @@ class LoginViewController: UIViewController {
             }
             
             if let _ = result {
+                RealmService.shared.write(login: login, password: password)
                 self.goToProfile()
             }
         }
@@ -271,4 +273,3 @@ class LoginViewController: UIViewController {
         contentView.addSubviews([logoImageView, loginPasswordStackView, buttonsStackView, activityIndicator])
     }
 }
-

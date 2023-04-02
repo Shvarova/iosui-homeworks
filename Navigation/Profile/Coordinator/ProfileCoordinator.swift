@@ -7,19 +7,28 @@
 
 import UIKit
 
-final class ProfileCoordinator: AppCoordinator {
-    
+final class ProfileCoordinator: TapBarCoordinator {
+
     var childs: [AppCoordinator] = []
     private let controller = ProfileViewController()
-    private let navigationController: UINavigationController
+    private var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController = UINavigationController()) {
         self.navigationController = navigationController
     }
     
     func start() {
         setProfileViewController()
         navigationController.pushViewController(controller, animated: true)
+    }
+    
+    func getNavigationController() -> UINavigationController {
+        navigationController = UINavigationController(rootViewController: controller)
+                navigationController.tabBarItem = UITabBarItem(title: "Профиль",
+                                                  image: UIImage(systemName: "person.crop.circle"),
+                                                  selectedImage: UIImage(systemName: "person.crop.circle"))
+                setProfileViewController()
+                return navigationController
     }
     
     private func setProfileViewController() {
@@ -33,9 +42,24 @@ final class ProfileCoordinator: AppCoordinator {
             coordinator.start()
             childs.append(coordinator)
         }
+    fileprivate func signOut() {
+        
+        RealmService.shared.remove()
+        if navigationController.viewControllers.count == 2 {
+            navigationController.popViewController(animated: true)
+            return
+        }
+        let lc = LoginCoordinator(navigationController: navigationController)
+        let controller = lc.getViewController()
+        navigationController.setViewControllers([controller], animated: true)
+    }
 }
 
 extension ProfileCoordinator: ProfileOutput {
+    func signOutButtonTouched() {
+        signOut()
+    }
+    
     func photosCellSelected() {
         showPhotosViewController()
     }

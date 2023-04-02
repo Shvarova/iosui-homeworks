@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3602BFF929D9C62700BE3DAB /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602BFF829D9C62700BE3DAB /* RealmService.swift */; };
 		360DEBDA29B8BC9500D0A6BC /* don-t-stop-me-now.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */; };
 		360DEBDC29B8BCD400D0A6BC /* the-show-must-go-on.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */; };
 		360DEBDE29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */; };
@@ -112,6 +113,7 @@
 		0200F41BFBD7F354CAD0EBF5 /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
 		0865CC39DECE0F73C735307D /* Pods_Navigation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Navigation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EAC3FADF884E51C1F56A9C9 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
+		3602BFF829D9C62700BE3DAB /* RealmService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "don-t-stop-me-now.mp3"; sourceTree = "<group>"; };
 		360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "the-show-must-go-on.mp3"; sourceTree = "<group>"; };
 		360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bohemian-rhapsody.mp3"; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				36944EDF29858D20009E1ED2 /* CurrentUserService.swift */,
 				36944EDD29858C17009E1ED2 /* TestUserService.swift */,
 				368F07B829CB474100083971 /* CheckerService.swift */,
+				3602BFF829D9C62700BE3DAB /* RealmService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -893,6 +896,7 @@
 				361580112993F6B3004FF4F8 /* CustomButton.swift in Sources */,
 				365E598A299FBD9D0001ABFC /* LoginCoordinator.swift in Sources */,
 				360DEBE929B8CD5600D0A6BC /* NewPostCoordinator.swift in Sources */,
+				3602BFF929D9C62700BE3DAB /* RealmService.swift in Sources */,
 				36661B82295F270100016070 /* PostTableViewCell.swift in Sources */,
 				36158014299401E0004FF4F8 /* FeedModel.swift in Sources */,
 				368400BC28E2EEC400CDDEEB /* InfoViewController.swift in Sources */,

@@ -7,30 +7,35 @@
 
 import UIKit
 
-final class LoginCoordinator: AppCoordinator {
+final class LoginCoordinator: TapBarCoordinator {
     
     var childs: [AppCoordinator] = []
-    private let controller: UIViewController
+    private let controller: UINavigationController
     private let loginVC = LoginViewController()
     private let loginNC: UINavigationController
     
-    init() {
+    init(navigationController: UINavigationController = UINavigationController()) {
        
         let loginInspector = MyLoginFactory.makeLoginInspector()
         loginVC.loginDelegate = loginInspector
-        loginNC = UINavigationController(rootViewController: loginVC)
+        self.loginNC = navigationController
+        loginNC.setViewControllers([loginVC], animated: true)
         loginNC.tabBarItem = UITabBarItem(title: "Профиль",
                                             image: UIImage(systemName: "person.crop.circle"),
                                             selectedImage: UIImage(systemName: "person.crop.circle"))
         controller = loginNC
-    }
-    
-    func start() {
         loginVC.output = self
     }
     
-    func getViewController() -> UIViewController {
+    func start() {
+    }
+    
+    func getNavigationController() -> UINavigationController {
         controller
+    }
+    
+    func getViewController() -> UIViewController {
+        loginVC
     }
     
     fileprivate func showProfileViewController() {

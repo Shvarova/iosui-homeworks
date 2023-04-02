@@ -7,10 +7,12 @@
 
 import UIKit
 
-final class FeedCoordinator: AppCoordinator {
+import UIKit
+
+final class FeedCoordinator: TapBarCoordinator {
     
     var childs: [AppCoordinator] = []
-    private let controller: UIViewController    
+    private let controller: UINavigationController
     private let feedVC = FeedViewController()
     private let feedNC: UINavigationController
     
@@ -21,13 +23,13 @@ final class FeedCoordinator: AppCoordinator {
                                             image: UIImage(systemName: "newspaper"),
                                             selectedImage: UIImage(systemName: "newspaper"))
         controller = feedNC
-    }
-    
-    func start() {
         feedVC.output = self
     }
     
-    func getViewController() -> UIViewController {
+    func start() {
+    }
+    
+    func getNavigationController() -> UINavigationController {
         controller
     }
     
