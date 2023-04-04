@@ -5,6 +5,7 @@
 //  Created by Дина Шварова on 31.03.2023.
 //
 
+import Foundation
 import RealmSwift
 
 class LoginObject: Object {
