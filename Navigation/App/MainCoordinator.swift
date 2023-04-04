@@ -22,13 +22,14 @@ final class MainCoordinator: AppCoordinator {
         self.navigationController = navigationController
         let loginCoordinator: TapBarCoordinator = RealmService.shared.isUserAuthorized() ? ProfileCoordinator() : LoginCoordinator()
         let feedCoordinator = FeedCoordinator()
+        let likedCoordinator = LikedCoordinator()
         
-        childs = [loginCoordinator, feedCoordinator]
+        childs = [loginCoordinator, feedCoordinator, likedCoordinator]
         
         let tabBarController = UITabBarController()
         tabBarController.tabBar.backgroundColor = .white
         
-        tabBarController.viewControllers = [feedCoordinator.getNavigationController(), loginCoordinator.getNavigationController()]
+        tabBarController.viewControllers = [feedCoordinator.getNavigationController(), loginCoordinator.getNavigationController(), likedCoordinator.getNavigationController()]
         controller = tabBarController
     }
     

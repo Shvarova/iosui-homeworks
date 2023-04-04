@@ -10,6 +10,13 @@
 		3602BFF929D9C62700BE3DAB /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602BFF829D9C62700BE3DAB /* RealmService.swift */; };
 		3602BFFC29DC691E00BE3DAB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 3602BFFB29DC691E00BE3DAB /* Realm */; };
 		3602BFFE29DC691E00BE3DAB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3602BFFD29DC691E00BE3DAB /* RealmSwift */; };
+		3602C00029DC6DE900BE3DAB /* LikedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602BFFF29DC6DE900BE3DAB /* LikedCoordinator.swift */; };
+		3602C00529DC6E6600BE3DAB /* LikedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C00429DC6E6600BE3DAB /* LikedView.swift */; };
+		3602C00729DC6EEA00BE3DAB /* LikedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C00629DC6EEA00BE3DAB /* LikedViewController.swift */; };
+		3602C00A29DC6FFD00BE3DAB /* PostModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3602C00829DC6FFD00BE3DAB /* PostModel.xcdatamodeld */; };
+		3602C00E29DC71EC00BE3DAB /* PostEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C00C29DC71EC00BE3DAB /* PostEntity+CoreDataClass.swift */; };
+		3602C00F29DC71EC00BE3DAB /* PostEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C00D29DC71EC00BE3DAB /* PostEntity+CoreDataProperties.swift */; };
+		3602C01129DC737F00BE3DAB /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C01029DC737F00BE3DAB /* CoreDataService.swift */; };
 		360DEBDA29B8BC9500D0A6BC /* don-t-stop-me-now.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */; };
 		360DEBDC29B8BCD400D0A6BC /* the-show-must-go-on.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */; };
 		360DEBDE29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */; };
@@ -113,6 +120,13 @@
 
 /* Begin PBXFileReference section */
 		3602BFF829D9C62700BE3DAB /* RealmService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		3602BFFF29DC6DE900BE3DAB /* LikedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCoordinator.swift; sourceTree = "<group>"; };
+		3602C00429DC6E6600BE3DAB /* LikedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedView.swift; sourceTree = "<group>"; };
+		3602C00629DC6EEA00BE3DAB /* LikedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedViewController.swift; sourceTree = "<group>"; };
+		3602C00929DC6FFD00BE3DAB /* PostModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PostModel.xcdatamodel; sourceTree = "<group>"; };
+		3602C00C29DC71EC00BE3DAB /* PostEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PostEntity+CoreDataClass.swift"; path = "Navigation/CoreData/PostEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		3602C00D29DC71EC00BE3DAB /* PostEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PostEntity+CoreDataProperties.swift"; path = "Navigation/CoreData/PostEntity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		3602C01029DC737F00BE3DAB /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "don-t-stop-me-now.mp3"; sourceTree = "<group>"; };
 		360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "the-show-must-go-on.mp3"; sourceTree = "<group>"; };
 		360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bohemian-rhapsody.mp3"; sourceTree = "<group>"; };
@@ -215,6 +229,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3602C00129DC6DEF00BE3DAB /* Liked */ = {
+			isa = PBXGroup;
+			children = (
+				3602C00329DC6E4D00BE3DAB /* View */,
+				3602C00229DC6E1500BE3DAB /* Coordinator */,
+			);
+			path = Liked;
+			sourceTree = "<group>";
+		};
+		3602C00229DC6E1500BE3DAB /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				3602BFFF29DC6DE900BE3DAB /* LikedCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		3602C00329DC6E4D00BE3DAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3602C00429DC6E6600BE3DAB /* LikedView.swift */,
+				3602C00629DC6EEA00BE3DAB /* LikedViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3602C00B29DC704400BE3DAB /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				3602C00829DC6FFD00BE3DAB /* PostModel.xcdatamodeld */,
+				3602C01029DC737F00BE3DAB /* CoreDataService.swift */,
+				3602C00C29DC71EC00BE3DAB /* PostEntity+CoreDataClass.swift */,
+				3602C00D29DC71EC00BE3DAB /* PostEntity+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		360DEBD829B8BC1A00D0A6BC /* Music */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,11 +397,13 @@
 				36944EE12986D201009E1ED2 /* Login */,
 				36B22EA9299BD223004DEF0B /* Photos */,
 				368400C428EA3AD600CDDEEB /* Profile */,
+				3602C00129DC6DEF00BE3DAB /* Liked */,
 				36158012299401C9004FF4F8 /* Feed */,
 				36B22EB4299BD3F1004DEF0B /* AudioPost */,
 				360DEBE329B8CCAF00D0A6BC /* NewPost */,
 				36B22EB5299BD400004DEF0B /* Info */,
 				360DEBD829B8BC1A00D0A6BC /* Music */,
+				3602C00B29DC704400BE3DAB /* CoreData */,
 				368400A828E2EC5000CDDEEB /* Assets.xcassets */,
 				368400AA28E2EC5000CDDEEB /* LaunchScreen.storyboard */,
 				368400AD28E2EC5000CDDEEB /* Info.plist */,
@@ -729,7 +782,7 @@
 			mainGroup = 3684009328E2EC4E00CDDEEB;
 			packageReferences = (
 				36944EEF298AB41A009E1ED2 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
-				3602BFFA29DC691E00BE3DAB /* XCRemoteSwiftPackageReference "realm-swift.git" */,
+				3602BFFA29DC691E00BE3DAB /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 3684009D28E2EC4E00CDDEEB /* Products */;
 			projectDirPath = "";
@@ -866,9 +919,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3602C01129DC737F00BE3DAB /* CoreDataService.swift in Sources */,
 				36944EE72986D46D009E1ED2 /* LoginInspector.swift in Sources */,
 				36507D8829706006001C6F98 /* Constants.swift in Sources */,
 				36B22ED4299BEC05004DEF0B /* ProfileModel.swift in Sources */,
+				3602C00A29DC6FFD00BE3DAB /* PostModel.xcdatamodeld in Sources */,
 				36507D8429705DBC001C6F98 /* PhotosTableViewCell.swift in Sources */,
 				36B22ED9299BF6F3004DEF0B /* InfoCoordinator.swift in Sources */,
 				36507D8629705E20001C6F98 /* PhotosViewController.swift in Sources */,
@@ -877,16 +932,20 @@
 				360DEBEC29C0B83B00D0A6BC /* NetworkService.swift in Sources */,
 				36B22ECB299BE4D9004DEF0B /* ProfileCoordinator.swift in Sources */,
 				36944EDC2985433F009E1ED2 /* User.swift in Sources */,
+				3602C00F29DC71EC00BE3DAB /* PostEntity+CoreDataProperties.swift in Sources */,
 				36B22ECE299BE564004DEF0B /* AudioPostCoordinator.swift in Sources */,
 				368400B628E2EE4E00CDDEEB /* FeedViewController.swift in Sources */,
 				368F07B929CB474100083971 /* CheckerService.swift in Sources */,
 				36B22ED0299BE991004DEF0B /* ProfileViewModel.swift in Sources */,
+				3602C00029DC6DE900BE3DAB /* LikedCoordinator.swift in Sources */,
 				365E5988299FBD530001ABFC /* FeedCoordinator.swift in Sources */,
 				36B22ED7299BF089004DEF0B /* PhotosCoordinator.swift in Sources */,
 				360DEBE529B8CCFB00D0A6BC /* NewPostViewController.swift in Sources */,
+				3602C00729DC6EEA00BE3DAB /* LikedViewController.swift in Sources */,
 				368400B828E2EE7600CDDEEB /* ProfileViewController.swift in Sources */,
 				36B22EC4299BD639004DEF0B /* RootCoordinator.swift in Sources */,
 				368400A028E2EC4E00CDDEEB /* AppDelegate.swift in Sources */,
+				3602C00E29DC71EC00BE3DAB /* PostEntity+CoreDataClass.swift in Sources */,
 				3630845529AE51C9005C5616 /* BrutForce.swift in Sources */,
 				36661B7D295D059400016070 /* LoginViewController.swift in Sources */,
 				36661B80295DE56D00016070 /* ExtensionUIView.swift in Sources */,
@@ -895,6 +954,7 @@
 				36944EE92986D4BD009E1ED2 /* LoginFactory.swift in Sources */,
 				368400C628EA3B0B00CDDEEB /* ProfileHeaderView.swift in Sources */,
 				368F07B729CB45D500083971 /* StackView.swift in Sources */,
+				3602C00529DC6E6600BE3DAB /* LikedView.swift in Sources */,
 				36507D8A297061ED001C6F98 /* PhotosCollectionViewCell.swift in Sources */,
 				365E599129AE44EC0001ABFC /* String.swift in Sources */,
 				36944EEB2986D4F4009E1ED2 /* MyLoginFactory.swift in Sources */,
@@ -1287,7 +1347,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3602BFFA29DC691E00BE3DAB /* XCRemoteSwiftPackageReference "realm-swift.git" */ = {
+		3602BFFA29DC691E00BE3DAB /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -1308,12 +1368,12 @@
 /* Begin XCSwiftPackageProductDependency section */
 		3602BFFB29DC691E00BE3DAB /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3602BFFA29DC691E00BE3DAB /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			package = 3602BFFA29DC691E00BE3DAB /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
 		3602BFFD29DC691E00BE3DAB /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3602BFFA29DC691E00BE3DAB /* XCRemoteSwiftPackageReference "realm-swift.git" */;
+			package = 3602BFFA29DC691E00BE3DAB /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 		36944EF0298AB41A009E1ED2 /* iOSIntPackage */ = {
@@ -1322,6 +1382,19 @@
 			productName = iOSIntPackage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		3602C00829DC6FFD00BE3DAB /* PostModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3602C00929DC6FFD00BE3DAB /* PostModel.xcdatamodel */,
+			);
+			currentVersion = 3602C00929DC6FFD00BE3DAB /* PostModel.xcdatamodel */;
+			path = PostModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3684009428E2EC4E00CDDEEB /* Project object */;
 }

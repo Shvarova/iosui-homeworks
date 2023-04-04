@@ -115,6 +115,10 @@ extension ProfileViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell,
               let posts = posts else { return defaultCell }
         let row = indexPath.row - 1
+        cell.doubleTapAction = {
+            CoreDataService.shared.save(post: posts[row])
+        }
+        cell.selectionStyle = .none
         cell.authorLabel.text = posts[row].author
         cell.setupImage(name: posts[row].image)
         cell.descriptionLabel.text = posts[row].description

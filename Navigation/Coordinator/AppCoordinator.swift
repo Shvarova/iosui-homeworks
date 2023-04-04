@@ -11,6 +11,5 @@ protocol AppCoordinator: AnyObject {
     
     var childs: [AppCoordinator] { get set }
     
-    func start()
 }
 

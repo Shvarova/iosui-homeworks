@@ -9,6 +9,8 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
+    var doubleTapAction: (() -> ())?
+    
     private lazy var postStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -90,6 +92,17 @@ class PostTableViewCell: UITableViewCell {
         statisticsView.addSubviews([likesLabel, viewsLabel])
         addSubviews([authorLabel, imagePost, postStackView])
         setupConstraints()
+        addDoubleTap()
+    }
+    
+    private func addDoubleTap() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTap))
+        tap.numberOfTapsRequired = 2
+        addGestureRecognizer(tap)
+    }
+    
+    @objc private func doubleTap() {
+        doubleTapAction?()
     }
     
     private func setupConstraints () {
