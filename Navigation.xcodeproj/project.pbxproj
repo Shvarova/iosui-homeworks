@@ -17,6 +17,9 @@
 		3602C00E29DC71EC00BE3DAB /* PostEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C00C29DC71EC00BE3DAB /* PostEntity+CoreDataClass.swift */; };
 		3602C00F29DC71EC00BE3DAB /* PostEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C00D29DC71EC00BE3DAB /* PostEntity+CoreDataProperties.swift */; };
 		3602C01129DC737F00BE3DAB /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C01029DC737F00BE3DAB /* CoreDataService.swift */; };
+		3602C01429DF147800BE3DAB /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C01329DF147800BE3DAB /* MapCoordinator.swift */; };
+		3602C01729DF14BF00BE3DAB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C01629DF14BF00BE3DAB /* MapViewController.swift */; };
+		3602C01A29DF17A400BE3DAB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C01929DF17A400BE3DAB /* MapView.swift */; };
 		360DEBDA29B8BC9500D0A6BC /* don-t-stop-me-now.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */; };
 		360DEBDC29B8BCD400D0A6BC /* the-show-must-go-on.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */; };
 		360DEBDE29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */; };
@@ -127,6 +130,9 @@
 		3602C00C29DC71EC00BE3DAB /* PostEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PostEntity+CoreDataClass.swift"; path = "Navigation/CoreData/PostEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		3602C00D29DC71EC00BE3DAB /* PostEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PostEntity+CoreDataProperties.swift"; path = "Navigation/CoreData/PostEntity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		3602C01029DC737F00BE3DAB /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		3602C01329DF147800BE3DAB /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		3602C01629DF14BF00BE3DAB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3602C01929DF17A400BE3DAB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "don-t-stop-me-now.mp3"; sourceTree = "<group>"; };
 		360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "the-show-must-go-on.mp3"; sourceTree = "<group>"; };
 		360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bohemian-rhapsody.mp3"; sourceTree = "<group>"; };
@@ -266,6 +272,32 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		3602C01229DF143A00BE3DAB /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				3602C01529DF149D00BE3DAB /* Coordinator */,
+				3602C01829DF14C500BE3DAB /* View */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		3602C01529DF149D00BE3DAB /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				3602C01329DF147800BE3DAB /* MapCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		3602C01829DF14C500BE3DAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3602C01629DF14BF00BE3DAB /* MapViewController.swift */,
+				3602C01929DF17A400BE3DAB /* MapView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		360DEBD829B8BC1A00D0A6BC /* Music */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,11 +426,12 @@
 				36B22EC2299BD60B004DEF0B /* Coordinator */,
 				36B22EC1299BD5F7004DEF0B /* App */,
 				36661B7E295DE53B00016070 /* Helpers */,
-				36944EE12986D201009E1ED2 /* Login */,
-				36B22EA9299BD223004DEF0B /* Photos */,
-				368400C428EA3AD600CDDEEB /* Profile */,
-				3602C00129DC6DEF00BE3DAB /* Liked */,
 				36158012299401C9004FF4F8 /* Feed */,
+				3602C01229DF143A00BE3DAB /* Friends */,
+				3602C00129DC6DEF00BE3DAB /* Liked */,
+				36944EE12986D201009E1ED2 /* Login */,
+				368400C428EA3AD600CDDEEB /* Profile */,
+				36B22EA9299BD223004DEF0B /* Photos */,
 				36B22EB4299BD3F1004DEF0B /* AudioPost */,
 				360DEBE329B8CCAF00D0A6BC /* NewPost */,
 				36B22EB5299BD400004DEF0B /* Info */,
@@ -935,6 +968,8 @@
 				3602C00F29DC71EC00BE3DAB /* PostEntity+CoreDataProperties.swift in Sources */,
 				36B22ECE299BE564004DEF0B /* AudioPostCoordinator.swift in Sources */,
 				368400B628E2EE4E00CDDEEB /* FeedViewController.swift in Sources */,
+				3602C01729DF14BF00BE3DAB /* MapViewController.swift in Sources */,
+				3602C01A29DF17A400BE3DAB /* MapView.swift in Sources */,
 				368F07B929CB474100083971 /* CheckerService.swift in Sources */,
 				36B22ED0299BE991004DEF0B /* ProfileViewModel.swift in Sources */,
 				3602C00029DC6DE900BE3DAB /* LikedCoordinator.swift in Sources */,
@@ -952,6 +987,7 @@
 				360DEBEE29C3693000D0A6BC /* TodoNetworkService.swift in Sources */,
 				36944EE029858D20009E1ED2 /* CurrentUserService.swift in Sources */,
 				36944EE92986D4BD009E1ED2 /* LoginFactory.swift in Sources */,
+				3602C01429DF147800BE3DAB /* MapCoordinator.swift in Sources */,
 				368400C628EA3B0B00CDDEEB /* ProfileHeaderView.swift in Sources */,
 				368F07B729CB45D500083971 /* StackView.swift in Sources */,
 				3602C00529DC6E6600BE3DAB /* LikedView.swift in Sources */,
@@ -1146,6 +1182,9 @@
 				DEVELOPMENT_TEAM = N4Z8VJLZRX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Используем геопозицию для лучшей работы приложения";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Используем геопозицию для лучшей работы приложения";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Используем геопозицию для лучшей работы приложения";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1156,7 +1195,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Navigation";
+				PRODUCT_BUNDLE_IDENTIFIER = dina.Navigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1176,6 +1215,9 @@
 				DEVELOPMENT_TEAM = N4Z8VJLZRX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Используем геопозицию для лучшей работы приложения";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Используем геопозицию для лучшей работы приложения";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Используем геопозицию для лучшей работы приложения";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1186,7 +1228,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Navigation";
+				PRODUCT_BUNDLE_IDENTIFIER = dina.Navigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

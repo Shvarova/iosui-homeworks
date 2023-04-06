@@ -11,8 +11,18 @@ import StorageService
 
 final class CoreDataService {
     
+   private lazy var persistentContainer: NSPersistentContainer = {
+            let container = NSPersistentContainer(name: "PostModel")
+            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+                if let error = error {
+                    fatalError("Unresolved error, ((error as NSError).userInfo)")
+                }
+            })
+            return container
+        }()
+    
     static let shared = CoreDataService()
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private lazy var context = persistentContainer.viewContext
     var postEntities: [PostEntity] {
         get {
             do {
