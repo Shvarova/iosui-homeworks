@@ -61,7 +61,7 @@ class LoginViewController: UIViewController {
         let textField = UITextField()
         textField.text = "admin@mail.ru"
         textField.backgroundColor = .systemGray6
-        textField.textColor = .black
+        textField.textColor = .createColor(lightMode: .black, darkMode: .white)
         textField.autocapitalizationType = .none
         textField.font = .systemFont(ofSize: 16)
         textField.layer.borderWidth = 0.5
@@ -78,7 +78,7 @@ class LoginViewController: UIViewController {
         textField.text = "admin123"
         textField.backgroundColor = .systemGray6
         textField.isSecureTextEntry = true
-        textField.textColor = .black
+        textField.textColor = .createColor(lightMode: .black, darkMode: .white)
         textField.autocapitalizationType = .none
         textField.font = .systemFont(ofSize: 16)
         textField.layer.borderWidth = 0.5
@@ -132,7 +132,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
         addViews()
         setupConstraints()
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))

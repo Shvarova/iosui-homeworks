@@ -18,6 +18,7 @@ final class MapCoordinator: AppCoordinator {
         navigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("Friends", comment: ""),
                                             image: UIImage(systemName: "map.circle"),
                                             selectedImage: UIImage(systemName: "map.circle"))
+        navigationController.navigationBar.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
     }
 
     func getNavigationController() -> UIViewController {

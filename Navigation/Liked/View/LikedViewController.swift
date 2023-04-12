@@ -16,7 +16,7 @@ class LikedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
     }
 
     override func viewWillAppear(_ animated: Bool) {

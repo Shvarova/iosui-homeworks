@@ -24,6 +24,7 @@ final class FeedCoordinator: TapBarCoordinator {
                                             selectedImage: UIImage(systemName: "newspaper"))
         controller = feedNC
         feedVC.output = self
+        feedNC.navigationBar.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
     }
     
     func start() {

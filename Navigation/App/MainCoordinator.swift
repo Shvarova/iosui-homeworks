@@ -28,8 +28,7 @@ final class MainCoordinator: AppCoordinator {
         childs = [loginCoordinator, feedCoordinator, likedCoordinator]
         
         let tabBarController = UITabBarController()
-        tabBarController.tabBar.backgroundColor = .white
-        
+        tabBarController.tabBar.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
         tabBarController.viewControllers = [feedCoordinator.getNavigationController(), mapCoordinator.getNavigationController(), likedCoordinator.getNavigationController(), loginCoordinator.getNavigationController()]
         controller = tabBarController
     }

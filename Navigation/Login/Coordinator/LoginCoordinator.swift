@@ -25,6 +25,7 @@ final class LoginCoordinator: TapBarCoordinator {
                                             selectedImage: UIImage(systemName: "person.crop.circle"))
         controller = loginNC
         loginVC.output = self
+        loginNC.navigationBar.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
     }
     
     func start() {

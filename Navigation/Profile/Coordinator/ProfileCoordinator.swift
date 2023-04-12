@@ -28,6 +28,7 @@ final class ProfileCoordinator: TapBarCoordinator {
                                                   image: UIImage(systemName: "person.crop.circle"),
                                                   selectedImage: UIImage(systemName: "person.crop.circle"))
                 setProfileViewController()
+        navigationController.navigationBar.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
                 return navigationController
     }
     

@@ -32,7 +32,7 @@ class MapView: UIView {
     }
 
     private func setupView() {
-        backgroundColor = .white
+        backgroundColor = .createColor(lightMode: .white, darkMode: .black)
         addSubview(map)
 
         let safeAreaGuide = safeAreaLayoutGuide

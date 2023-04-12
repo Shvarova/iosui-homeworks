@@ -24,7 +24,7 @@ class PostTableViewCell: UITableViewCell {
         label.backgroundColor = .clear
         label.numberOfLines = 2
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = .black
+        label.textColor = .createColor(lightMode: .black, darkMode: .white)
         label.textAlignment = NSTextAlignment.left
         label.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +33,7 @@ class PostTableViewCell: UITableViewCell {
     
     private lazy var imagePost: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .black
+        imageView.backgroundColor = .clear
         imageView.contentMode = .scaleAspectFit
         imageView.setContentCompressionResistancePriority(UILayoutPriority(100), for: .vertical)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +44,7 @@ class PostTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = UIFont(name: "System", size: 14)
-        label.textColor = .systemGray
+        label.textColor = .createColor(lightMode: .systemGray, darkMode: .white)
         return label
     }()
     
@@ -54,7 +54,7 @@ class PostTableViewCell: UITableViewCell {
         let label = UILabel()
         label.backgroundColor = .clear
         label.font = UIFont(name: "System", size: 16)
-        label.textColor = .black
+        label.textColor = .createColor(lightMode: .black, darkMode: .white)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -63,7 +63,7 @@ class PostTableViewCell: UITableViewCell {
         let label = UILabel()
         label.backgroundColor = .clear
         label.font = UIFont(name: "System", size: 16)
-        label.textColor = .black
+        label.textColor = .createColor(lightMode: .black, darkMode: .white)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -86,7 +86,7 @@ class PostTableViewCell: UITableViewCell {
     }
     
     private func setupView () {
-        backgroundColor = .white
+        backgroundColor = .clear
         postStackView.addArrangedSubview(descriptionLabel)
         postStackView.addArrangedSubview(statisticsView)
         statisticsView.addSubviews([likesLabel, viewsLabel])

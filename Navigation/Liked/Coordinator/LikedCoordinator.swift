@@ -18,6 +18,7 @@ final class LikedCoordinator: AppCoordinator {
         navigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("Liked", comment: ""),
                                             image: UIImage(systemName: "heart"),
                                             selectedImage: UIImage(systemName: "heart.fill"))
+        navigationController.navigationBar.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
     }
 
     func getNavigationController() -> UIViewController {

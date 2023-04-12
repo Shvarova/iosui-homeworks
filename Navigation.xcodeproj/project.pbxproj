@@ -21,6 +21,7 @@
 		3602C01729DF14BF00BE3DAB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C01629DF14BF00BE3DAB /* MapViewController.swift */; };
 		3602C01A29DF17A400BE3DAB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C01929DF17A400BE3DAB /* MapView.swift */; };
 		3602C01D29DF30CB00BE3DAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3602C01F29DF30CB00BE3DAB /* Localizable.strings */; };
+		3602C02529E6F8BB00BE3DAB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C02429E6F8BB00BE3DAB /* Colors.swift */; };
 		360DEBDA29B8BC9500D0A6BC /* don-t-stop-me-now.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */; };
 		360DEBDC29B8BCD400D0A6BC /* the-show-must-go-on.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */; };
 		360DEBDE29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */; };
@@ -138,6 +139,7 @@
 		3602C02029DF30F800BE3DAB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3602C02129DF30F900BE3DAB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3602C02329DF361300BE3DAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		3602C02429E6F8BB00BE3DAB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "don-t-stop-me-now.mp3"; sourceTree = "<group>"; };
 		360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "the-show-must-go-on.mp3"; sourceTree = "<group>"; };
 		360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bohemian-rhapsody.mp3"; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				361580102993F6B3004FF4F8 /* CustomButton.swift */,
 				365E599029AE44EC0001ABFC /* String.swift */,
 				368F07B629CB45D500083971 /* StackView.swift */,
+				3602C02429E6F8BB00BE3DAB /* Colors.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -975,6 +978,7 @@
 				36944EDC2985433F009E1ED2 /* User.swift in Sources */,
 				3602C00F29DC71EC00BE3DAB /* PostEntity+CoreDataProperties.swift in Sources */,
 				36B22ECE299BE564004DEF0B /* AudioPostCoordinator.swift in Sources */,
+				3602C02529E6F8BB00BE3DAB /* Colors.swift in Sources */,
 				368400B628E2EE4E00CDDEEB /* FeedViewController.swift in Sources */,
 				3602C01729DF14BF00BE3DAB /* MapViewController.swift in Sources */,
 				3602C01A29DF17A400BE3DAB /* MapView.swift in Sources */,

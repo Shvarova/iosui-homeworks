@@ -71,7 +71,7 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        view.backgroundColor = .white
+        view.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
         title = NSLocalizedString("Newsline", comment: "")
         setupView()
         timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { _ in
@@ -90,6 +90,8 @@ class FeedViewController: UIViewController {
     }
     
     private func setupView () {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tap)
         view.addSubviews([stackView, textField, checkGuessButton])
         stackView.addArrangedSubview(button1)
         stackView.addArrangedSubview(button2)
@@ -109,6 +111,10 @@ class FeedViewController: UIViewController {
             checkGuessButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             checkGuessButton.heightAnchor.constraint(equalToConstant: 50),
         ])
+    }
+    
+    @objc private func hideKeyboard() {
+        view.endEditing(true)
     }
     
     private func checkGuess () {

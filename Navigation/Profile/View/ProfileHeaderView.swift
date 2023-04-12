@@ -22,7 +22,7 @@ class ProfileHeaderView: UIView {
         let status = UILabel ()
         status.translatesAutoresizingMaskIntoConstraints = false
         status.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        status.textColor = .gray
+        status.textColor = .createColor(lightMode: .gray, darkMode: .white)
         status.text = statusText
         return status
     }()
@@ -34,7 +34,7 @@ class ProfileHeaderView: UIView {
         avatar.layer.cornerRadius = 60
         avatar.layer.borderWidth = 3
         avatar.layer.masksToBounds = true
-        avatar.layer.borderColor = UIColor.white.cgColor
+        avatar.layer.borderColor = UIColor.createColor(lightMode: .white, darkMode: .black).cgColor
         return avatar
     }()
     
@@ -55,8 +55,10 @@ class ProfileHeaderView: UIView {
         let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        text.textColor = .black
-        text.backgroundColor = .white
+        text.textColor = .createColor(lightMode: .black, darkMode: .white)
+        text.backgroundColor = .createColor(lightMode: .white, darkMode: .darkGray)
+        text.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: text.frame.height))
+        text.leftViewMode = .always
         text.layer.cornerRadius = 12
         text.layer.masksToBounds = true
         text.layer.borderWidth = 1
@@ -83,7 +85,7 @@ class ProfileHeaderView: UIView {
     
     func setupView() {
         
-        self.backgroundColor = .lightGray
+        self.backgroundColor = .createColor(lightMode: .lightGray, darkMode: .darkGray)
         
         self.addSubview(userAvatar)
         self.addSubview(nameLabel)

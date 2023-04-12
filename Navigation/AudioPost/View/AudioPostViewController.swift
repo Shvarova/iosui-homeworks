@@ -19,7 +19,7 @@ class AudioPostViewController: UIViewController {
     private lazy var image: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Queen")
-        imageView.backgroundColor = .white
+        imageView.backgroundColor = .clear
         imageView.contentMode = .scaleAspectFit
         imageView.setContentCompressionResistancePriority(UILayoutPriority(100), for: .vertical)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +77,7 @@ class AudioPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        view.backgroundColor = .white
+        view.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
         let titleLabel = UILabel()
         titleLabel.text = "Queen"
         title = titleLabel.text

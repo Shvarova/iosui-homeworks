@@ -23,7 +23,6 @@ final class ProfileViewController: UIViewController {
     
     private lazy var profileHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView ()
-        view.backgroundColor = .lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -75,7 +74,7 @@ final class ProfileViewController: UIViewController {
 #if DEBUG
         view.backgroundColor = .systemMint
 #else
-        view.backgroundColor = .white
+        view.backgroundColor = .createColor(lightMode: .white, darkMode: .black)
 #endif
         view.addSubviews([profileHeaderView, tableView])
         
