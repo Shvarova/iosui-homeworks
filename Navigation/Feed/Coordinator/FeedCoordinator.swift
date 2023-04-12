@@ -19,7 +19,7 @@ final class FeedCoordinator: TapBarCoordinator {
     init() {
         
         feedNC = UINavigationController(rootViewController: feedVC)
-        feedNC.tabBarItem = UITabBarItem(title: "Лента новостей",
+        feedNC.tabBarItem = UITabBarItem(title: NSLocalizedString("Newsline", comment: ""),
                                             image: UIImage(systemName: "newspaper"),
                                             selectedImage: UIImage(systemName: "newspaper"))
         controller = feedNC

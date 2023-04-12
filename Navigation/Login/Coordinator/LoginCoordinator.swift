@@ -20,7 +20,7 @@ final class LoginCoordinator: TapBarCoordinator {
         loginVC.loginDelegate = loginInspector
         self.loginNC = navigationController
         loginNC.setViewControllers([loginVC], animated: true)
-        loginNC.tabBarItem = UITabBarItem(title: "Профиль",
+        loginNC.tabBarItem = UITabBarItem(title: NSLocalizedString("Profile", comment: ""),
                                             image: UIImage(systemName: "person.crop.circle"),
                                             selectedImage: UIImage(systemName: "person.crop.circle"))
         controller = loginNC

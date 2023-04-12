@@ -60,8 +60,8 @@ final class ProfileViewController: UIViewController {
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.title = "Профиль"
-        let signOut = UIBarButtonItem(title: "sign out", style: .done, target: self, action: #selector(signOut))
+        navigationItem.title = NSLocalizedString("Profile", comment: "")
+        let signOut = UIBarButtonItem(title: NSLocalizedString("sign out", comment: ""), style: .done, target: self, action: #selector(signOut))
         navigationItem.leftBarButtonItem = signOut
     }
     

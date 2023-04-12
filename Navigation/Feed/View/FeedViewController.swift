@@ -53,7 +53,7 @@ class FeedViewController: UIViewController {
     }()
     
     private lazy var checkGuessButton: CustomButton = {
-        let button = CustomButton (title: "Проверить", titleColor: .black, cornerRadius: 4)
+        let button = CustomButton (title: NSLocalizedString("Check" , comment: ""), titleColor: .black, cornerRadius: 4)
         button.backgroundColor = .lightGray
         button.action = checkGuess
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +72,7 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .white
-        title = "Лента новостей"
+        title = NSLocalizedString("Newsline", comment: "")
         setupView()
         timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { _ in
             let alert = UIAlertController(title: "Хотите получать подборку самых интересных новостей?", message: "будем ежедневно присылать на почту указанную при регистрации", preferredStyle: .alert)

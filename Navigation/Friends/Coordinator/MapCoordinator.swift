@@ -15,7 +15,7 @@ final class MapCoordinator: AppCoordinator {
 
     init() {
         navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.tabBarItem = UITabBarItem(title: "Друзья",
+        navigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("Friends", comment: ""),
                                             image: UIImage(systemName: "map.circle"),
                                             selectedImage: UIImage(systemName: "map.circle"))
     }

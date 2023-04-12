@@ -15,7 +15,7 @@ final class LikedCoordinator: AppCoordinator {
 
     init() {
         navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.tabBarItem = UITabBarItem(title: "Понравилось",
+        navigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("Liked", comment: ""),
                                             image: UIImage(systemName: "heart"),
                                             selectedImage: UIImage(systemName: "heart.fill"))
     }

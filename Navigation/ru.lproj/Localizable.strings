@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Navigation
+
+  Created by Дина Шварова on 06.04.2023.
+  
+*/
+
+"Profile" = "Профиль";
+"Log in" = "Войти";
+"Sign up" = "Зарегистрироваться";
+"Check" = "Проверить";
+"Newsline" = "Лента новостей";
+"Friends" = "Друзья";
+"New post" = "Новый пост";
+"Liked" = "Понравилось";

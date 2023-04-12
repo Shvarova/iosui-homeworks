@@ -24,7 +24,7 @@ final class ProfileCoordinator: TapBarCoordinator {
     
     func getNavigationController() -> UINavigationController {
         navigationController = UINavigationController(rootViewController: controller)
-                navigationController.tabBarItem = UITabBarItem(title: "Профиль",
+                navigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("Profile", comment: ""),
                                                   image: UIImage(systemName: "person.crop.circle"),
                                                   selectedImage: UIImage(systemName: "person.crop.circle"))
                 setProfileViewController()

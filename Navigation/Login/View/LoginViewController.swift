@@ -91,7 +91,7 @@ class LoginViewController: UIViewController {
     }()
     
     private lazy var logInButton: CustomButton = {
-        let button = CustomButton (title: "Log In", titleColor: .white, cornerRadius: 10)
+        let button = CustomButton(title: NSLocalizedString("Log in", comment: "CustomButton"), titleColor: .white, cornerRadius: 10)
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
         button.action = login
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -99,7 +99,7 @@ class LoginViewController: UIViewController {
     }()
     
     private lazy var signupButton: CustomButton = {
-        let button = CustomButton (title: "Sign up", titleColor: .white, cornerRadius: 10)
+        let button = CustomButton (title: NSLocalizedString("Sign up", comment: ""), titleColor: .white, cornerRadius: 10)
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
         button.action = register
         button.translatesAutoresizingMaskIntoConstraints = false

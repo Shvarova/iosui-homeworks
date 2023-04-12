@@ -1,0 +1,15 @@
+/* 
+ Localizable.strings
+ Navigation
+ 
+ Created by Дина Шварова on 06.04.2023.
+ */
+
+"Profile" = "Profile";
+"Log in" = "Log in";
+"Sign up" = "Sign up";
+"Check" = "Check";
+"Newsline" = "Newsline";
+"Friends" = "Friends";
+"New post" = "New post";
+"Liked" = "Liked";

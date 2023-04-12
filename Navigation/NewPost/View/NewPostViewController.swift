@@ -20,9 +20,9 @@ class NewPostViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .white
         let titleLabel = UILabel()
-        titleLabel.text = "Новый пост"
+        titleLabel.text = NSLocalizedString("New post", comment: "")
         title = titleLabel.text
-        navigationItem.backButtonTitle = "Назад"
+        navigationItem.backButtonTitle = "Back"
         let infoImage = UIImage(named: "info")
         let infoButton = UIBarButtonItem(image: infoImage, style: .plain, target: self, action: #selector(buttonInfoClicked))
         navigationItem.rightBarButtonItem = infoButton

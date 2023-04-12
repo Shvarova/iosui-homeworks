@@ -20,6 +20,7 @@
 		3602C01429DF147800BE3DAB /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C01329DF147800BE3DAB /* MapCoordinator.swift */; };
 		3602C01729DF14BF00BE3DAB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C01629DF14BF00BE3DAB /* MapViewController.swift */; };
 		3602C01A29DF17A400BE3DAB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C01929DF17A400BE3DAB /* MapView.swift */; };
+		3602C01D29DF30CB00BE3DAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3602C01F29DF30CB00BE3DAB /* Localizable.strings */; };
 		360DEBDA29B8BC9500D0A6BC /* don-t-stop-me-now.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */; };
 		360DEBDC29B8BCD400D0A6BC /* the-show-must-go-on.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */; };
 		360DEBDE29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */; };
@@ -133,6 +134,10 @@
 		3602C01329DF147800BE3DAB /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		3602C01629DF14BF00BE3DAB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3602C01929DF17A400BE3DAB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		3602C01E29DF30CB00BE3DAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3602C02029DF30F800BE3DAB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		3602C02129DF30F900BE3DAB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3602C02329DF361300BE3DAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "don-t-stop-me-now.mp3"; sourceTree = "<group>"; };
 		360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "the-show-must-go-on.mp3"; sourceTree = "<group>"; };
 		360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bohemian-rhapsody.mp3"; sourceTree = "<group>"; };
@@ -439,6 +444,7 @@
 				3602C00B29DC704400BE3DAB /* CoreData */,
 				368400A828E2EC5000CDDEEB /* Assets.xcassets */,
 				368400AA28E2EC5000CDDEEB /* LaunchScreen.storyboard */,
+				3602C01F29DF30CB00BE3DAB /* Localizable.strings */,
 				368400AD28E2EC5000CDDEEB /* Info.plist */,
 				368F07B429CB364800083971 /* GoogleService-Info.plist */,
 				368400BD28E2EF0200CDDEEB /* .gitignore */,
@@ -811,6 +817,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 3684009328E2EC4E00CDDEEB;
 			packageReferences = (
@@ -838,6 +845,7 @@
 				368F07B529CB364800083971 /* GoogleService-Info.plist in Resources */,
 				360DEBDC29B8BCD400D0A6BC /* the-show-must-go-on.mp3 in Resources */,
 				360DEBDE29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 in Resources */,
+				3602C01D29DF30CB00BE3DAB /* Localizable.strings in Resources */,
 				360DEBDA29B8BC9500D0A6BC /* don-t-stop-me-now.mp3 in Resources */,
 				368400BE28E2EF0200CDDEEB /* .gitignore in Resources */,
 				368400A928E2EC5000CDDEEB /* Assets.xcassets in Resources */,
@@ -1045,10 +1053,21 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3602C01F29DF30CB00BE3DAB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3602C01E29DF30CB00BE3DAB /* en */,
+				3602C02129DF30F900BE3DAB /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		368400AA28E2EC5000CDDEEB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				368400AB28E2EC5000CDDEEB /* Base */,
+				3602C02029DF30F800BE3DAB /* ru */,
+				3602C02329DF361300BE3DAB /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1060,6 +1079,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1120,6 +1140,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
