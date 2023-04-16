@@ -22,6 +22,7 @@
 		3602C01A29DF17A400BE3DAB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C01929DF17A400BE3DAB /* MapView.swift */; };
 		3602C01D29DF30CB00BE3DAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3602C01F29DF30CB00BE3DAB /* Localizable.strings */; };
 		3602C02529E6F8BB00BE3DAB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C02429E6F8BB00BE3DAB /* Colors.swift */; };
+		3602C09B29EB10F100BE3DAB /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C09A29EB10F100BE3DAB /* LocalAuthorizationService.swift */; };
 		360DEBDA29B8BC9500D0A6BC /* don-t-stop-me-now.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */; };
 		360DEBDC29B8BCD400D0A6BC /* the-show-must-go-on.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */; };
 		360DEBDE29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */; };
@@ -140,6 +141,7 @@
 		3602C02129DF30F900BE3DAB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3602C02329DF361300BE3DAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3602C02429E6F8BB00BE3DAB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		3602C09A29EB10F100BE3DAB /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
 		360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "don-t-stop-me-now.mp3"; sourceTree = "<group>"; };
 		360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "the-show-must-go-on.mp3"; sourceTree = "<group>"; };
 		360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bohemian-rhapsody.mp3"; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				36944EDD29858C17009E1ED2 /* TestUserService.swift */,
 				368F07B829CB474100083971 /* CheckerService.swift */,
 				3602BFF829D9C62700BE3DAB /* RealmService.swift */,
+				3602C09A29EB10F100BE3DAB /* LocalAuthorizationService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -972,6 +975,7 @@
 				36B22ED9299BF6F3004DEF0B /* InfoCoordinator.swift in Sources */,
 				36507D8629705E20001C6F98 /* PhotosViewController.swift in Sources */,
 				365E5986299FB78B0001ABFC /* MainCoordinator.swift in Sources */,
+				3602C09B29EB10F100BE3DAB /* LocalAuthorizationService.swift in Sources */,
 				36B22EC6299BD651004DEF0B /* AppCoordinator.swift in Sources */,
 				360DEBEC29C0B83B00D0A6BC /* NetworkService.swift in Sources */,
 				36B22ECB299BE4D9004DEF0B /* ProfileCoordinator.swift in Sources */,

@@ -98,6 +98,14 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    private lazy var bioButton: UIButton = {
+        let button = CustomButton(title: "Войти с Face ID/Touch ID", titleColor: .white, cornerRadius: 10)
+        button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
+        button.addTarget(self, action: #selector(loginBio), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     private lazy var signupButton: CustomButton = {
         let button = CustomButton (title: NSLocalizedString("Sign up", comment: ""), titleColor: .white, cornerRadius: 10)
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
@@ -125,7 +133,7 @@ class LoginViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 10
-        stackView.addArrangedSubviews(logInButton, signupButton, bruteForceButton)
+        stackView.addArrangedSubviews(logInButton, bioButton, signupButton, bruteForceButton)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -165,6 +173,16 @@ class LoginViewController: UIViewController {
             if let _ = result {
                 RealmService.shared.write(login: login, password: password)
                 self.goToProfile()
+            }
+        }
+    }
+    
+    @objc private func loginBio() {
+        LocalAuthorizationService.shared.authorizeIfPossible { isSuccess in
+            if isSuccess {
+                self.goToProfile()
+            } else {
+                self.showAlert(title: "Ошибка", message: "Не удалось распознать данные")
             }
         }
     }
@@ -257,6 +275,7 @@ class LoginViewController: UIViewController {
             buttonsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             
             logInButton.heightAnchor.constraint(equalToConstant: 50),
+            bioButton.heightAnchor.constraint(equalToConstant: 50),
             signupButton.heightAnchor.constraint(equalToConstant: 50),
             bruteForceButton.heightAnchor.constraint(equalToConstant: 50),
             
