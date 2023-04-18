@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         default: break
         }
         NetworkService.request(configurations: config)
+        LocalNotificationsService.shared.registeForLatestUpdatesIfPossible()
         return true
     }
     func applicationWillTerminate(_ application: UIApplication) {

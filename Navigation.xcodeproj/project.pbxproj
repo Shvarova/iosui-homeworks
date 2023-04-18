@@ -23,6 +23,7 @@
 		3602C01D29DF30CB00BE3DAB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3602C01F29DF30CB00BE3DAB /* Localizable.strings */; };
 		3602C02529E6F8BB00BE3DAB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C02429E6F8BB00BE3DAB /* Colors.swift */; };
 		3602C09B29EB10F100BE3DAB /* LocalAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C09A29EB10F100BE3DAB /* LocalAuthorizationService.swift */; };
+		3602C09E29EEE03100BE3DAB /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C09D29EEE03100BE3DAB /* LocalNotificationsService.swift */; };
 		360DEBDA29B8BC9500D0A6BC /* don-t-stop-me-now.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */; };
 		360DEBDC29B8BCD400D0A6BC /* the-show-must-go-on.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */; };
 		360DEBDE29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */; };
@@ -142,6 +143,8 @@
 		3602C02329DF361300BE3DAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		3602C02429E6F8BB00BE3DAB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		3602C09A29EB10F100BE3DAB /* LocalAuthorizationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAuthorizationService.swift; sourceTree = "<group>"; };
+		3602C09C29EEDFF900BE3DAB /* Navigation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Navigation.entitlements; sourceTree = "<group>"; };
+		3602C09D29EEE03100BE3DAB /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "don-t-stop-me-now.mp3"; sourceTree = "<group>"; };
 		360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "the-show-must-go-on.mp3"; sourceTree = "<group>"; };
 		360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bohemian-rhapsody.mp3"; sourceTree = "<group>"; };
@@ -432,6 +435,7 @@
 		3684009E28E2EC4E00CDDEEB /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				3602C09C29EEDFF900BE3DAB /* Navigation.entitlements */,
 				360DEBEA29C0B7F600D0A6BC /* NetworkService */,
 				36B22EC2299BD60B004DEF0B /* Coordinator */,
 				36B22EC1299BD5F7004DEF0B /* App */,
@@ -627,6 +631,7 @@
 		36B22EC1299BD5F7004DEF0B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				3602C09D29EEE03100BE3DAB /* LocalNotificationsService.swift */,
 				3684009F28E2EC4E00CDDEEB /* AppDelegate.swift */,
 				365E5985299FB78B0001ABFC /* MainCoordinator.swift */,
 			);
@@ -1010,6 +1015,7 @@
 				36507D8A297061ED001C6F98 /* PhotosCollectionViewCell.swift in Sources */,
 				365E599129AE44EC0001ABFC /* String.swift in Sources */,
 				36944EEB2986D4F4009E1ED2 /* MyLoginFactory.swift in Sources */,
+				3602C09E29EEE03100BE3DAB /* LocalNotificationsService.swift in Sources */,
 				36F789942971AE360034D100 /* PhotosModel.swift in Sources */,
 				36944EDE29858C17009E1ED2 /* TestUserService.swift in Sources */,
 				361580112993F6B3004FF4F8 /* CustomButton.swift in Sources */,
@@ -1206,9 +1212,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Navigation/Navigation.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N4Z8VJLZRX;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Используем геопозицию для лучшей работы приложения";
@@ -1239,9 +1246,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Navigation/Navigation.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N4Z8VJLZRX;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Используем геопозицию для лучшей работы приложения";
