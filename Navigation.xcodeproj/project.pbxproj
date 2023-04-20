@@ -17,6 +17,7 @@
 		3602C00E29DC71EC00BE3DAB /* PostEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C00C29DC71EC00BE3DAB /* PostEntity+CoreDataClass.swift */; };
 		3602C00F29DC71EC00BE3DAB /* PostEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C00D29DC71EC00BE3DAB /* PostEntity+CoreDataProperties.swift */; };
 		3602C01129DC737F00BE3DAB /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C01029DC737F00BE3DAB /* CoreDataService.swift */; };
+		3602C0A029F18F9000BE3DAB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602C09F29F18F9000BE3DAB /* SearchViewController.swift */; };
 		360DEBDA29B8BC9500D0A6BC /* don-t-stop-me-now.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */; };
 		360DEBDC29B8BCD400D0A6BC /* the-show-must-go-on.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */; };
 		360DEBDE29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */; };
@@ -127,6 +128,7 @@
 		3602C00C29DC71EC00BE3DAB /* PostEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PostEntity+CoreDataClass.swift"; path = "Navigation/CoreData/PostEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		3602C00D29DC71EC00BE3DAB /* PostEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PostEntity+CoreDataProperties.swift"; path = "Navigation/CoreData/PostEntity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		3602C01029DC737F00BE3DAB /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		3602C09F29F18F9000BE3DAB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		360DEBD929B8BC9500D0A6BC /* don-t-stop-me-now.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "don-t-stop-me-now.mp3"; sourceTree = "<group>"; };
 		360DEBDB29B8BCD400D0A6BC /* the-show-must-go-on.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "the-show-must-go-on.mp3"; sourceTree = "<group>"; };
 		360DEBDD29B8BCE000D0A6BC /* bohemian-rhapsody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bohemian-rhapsody.mp3"; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				3602C00429DC6E6600BE3DAB /* LikedView.swift */,
 				3602C00629DC6EEA00BE3DAB /* LikedViewController.swift */,
+				3602C09F29F18F9000BE3DAB /* SearchViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -959,6 +962,7 @@
 				365E599129AE44EC0001ABFC /* String.swift in Sources */,
 				36944EEB2986D4F4009E1ED2 /* MyLoginFactory.swift in Sources */,
 				36F789942971AE360034D100 /* PhotosModel.swift in Sources */,
+				3602C0A029F18F9000BE3DAB /* SearchViewController.swift in Sources */,
 				36944EDE29858C17009E1ED2 /* TestUserService.swift in Sources */,
 				361580112993F6B3004FF4F8 /* CustomButton.swift in Sources */,
 				365E598A299FBD9D0001ABFC /* LoginCoordinator.swift in Sources */,

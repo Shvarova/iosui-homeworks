@@ -14,6 +14,7 @@ final class LikedView: UIView {
     private lazy var tableView: UITableView = {
         let tableView = UITableView ()
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
@@ -63,6 +64,14 @@ extension LikedView: UITableViewDataSource {
         cell.viewsLabel.text = "Views: \(posts[row].views)"
         return cell
     }
-    
-    
+}
+
+extension LikedView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        UISwipeActionsConfiguration (actions: [UIContextualAction(style: .destructive, title: "Удалить", handler: { action, view, completion in
+            CoreDataService.shared.remove(self.posts[indexPath.row])
+            self.posts.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        })])
+    }
 }
